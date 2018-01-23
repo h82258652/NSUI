@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="using:NSUI.Controls">
+    <Style TargetType="controls:NSCircleFocusVisual">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:NSCircleFocusVisual">
+                    <Ellipse StrokeThickness="1">
+                        <Shape.Stroke>
+                            <SolidColorBrush />
+                        </Shape.Stroke>
+                    </Ellipse>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
