@@ -34,10 +34,11 @@ namespace NSUI.Controls
 
             var audioFile = await StorageFile.GetFileFromApplicationUriAsync(audioSource);
 
-            var stream = await audioFile.OpenStreamForReadAsync();
+            //var stream = await audioFile.OpenStreamForReadAsync();
 
             var wasapiOut = new WasapiOutRT(AudioClientShareMode.Shared, 200);
-            wasapiOut.Init(() => new RawSourceWaveStream(stream, new WaveFormat()));
+            ;
+            wasapiOut.Init(() => new MediaFoundationReader(audioFile.Path));
             wasapiOut.Play();
         }
     }

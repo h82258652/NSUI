@@ -9,7 +9,7 @@
                 <ControlTemplate TargetType="controls:NSFocusVisual">
                     <Rectangle StrokeThickness="1">
                         <Shape.Stroke>
-                            <SolidColorBrush />
+                            <SolidColorBrush Color="Red" />
                         </Shape.Stroke>
                         <UIElement.RenderTransform>
                             <TranslateTransform />

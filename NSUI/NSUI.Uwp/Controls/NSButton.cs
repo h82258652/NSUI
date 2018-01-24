@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Input;
 
 namespace NSUI.Controls
 {
-    public class NSButton : Button
+    public class NSButton : NSButtonBase
     {
         private const string FocusVisualTemplateName = "PART_FocusVisual";
 

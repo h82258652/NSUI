@@ -7,29 +7,27 @@ namespace NSUI.Controls
 {
     public class NSFocusVisual : Control, INSFocusVisual
     {
+        private const double ShakeToValue = 8;
+
+        private static readonly Duration ShakeDuration = TimeSpan.FromSeconds(0.3);
+
         public NSFocusVisual()
         {
             DefaultStyleKey = typeof(NSFocusVisual);
         }
 
-        private const double ShakeToValue = 8;
-
-        private static readonly Duration ShakeDuration = TimeSpan.FromSeconds(0.3);
-
         public void ShakeDown()
         {
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation  = new DoubleAnimation();
+            DoubleAnimation animation = new DoubleAnimation();
             animation.From = 0;
             animation.To = ShakeToValue;
             animation.Duration = ShakeDuration;
             animation.EasingFunction = new BackEase()
             {
-
             };
             storyboard.Children.Add(animation);
             storyboard.Begin();
-
 
             // TODO
         }
@@ -39,9 +37,10 @@ namespace NSUI.Controls
             var storyboard = new Storyboard();
             var animation = new DoubleAnimation();
             animation.From = 0;
+            Storyboard.SetTarget(animation, null);
+            Storyboard.SetTargetProperty(animation, null);
             storyboard.Children.Add(animation);
             storyboard.Begin();
-
 
             // TODO
         }

@@ -151,8 +151,39 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
     <Folder Include="Styles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Audios\album.wav" />
+    <Content Include="Assets\Audios\bing.wav" />
+    <Content Include="Assets\Audios\border.wav" />
+    <Content Include="Assets\Audios\controller.wav" />
+    <Content Include="Assets\Audios\dada0.wav" />
+    <Content Include="Assets\Audios\dada1.wav" />
+    <Content Include="Assets\Audios\dada2.wav" />
+    <Content Include="Assets\Audios\dada3.wav" />
+    <Content Include="Assets\Audios\dodo.wav" />
+    <Content Include="Assets\Audios\enter &amp; back.wav" />
+    <Content Include="Assets\Audios\error.wav" />
+    <Content Include="Assets\Audios\eshop.wav" />
+    <Content Include="Assets\Audios\eshopintro.wav" />
+    <Content Include="Assets\Audios\home.wav" />
+    <Content Include="Assets\Audios\icons.wav" />
+    <Content Include="Assets\Audios\jig0.wav" />
+    <Content Include="Assets\Audios\jig1.wav" />
+    <Content Include="Assets\Audios\klick.wav" />
+    <Content Include="Assets\Audios\loading.wav" />
+    <Content Include="Assets\Audios\news.wav" />
+    <Content Include="Assets\Audios\nock.wav" />
+    <Content Include="Assets\Audios\popup+runtitle.wav" />
+    <Content Include="Assets\Audios\select.wav" />
+    <Content Include="Assets\Audios\settings.wav" />
+    <Content Include="Assets\Audios\standby.wav" />
+    <Content Include="Assets\Audios\thisone.wav" />
+    <Content Include="Assets\Audios\tick.wav" />
+    <Content Include="Assets\Audios\turnoff.wav" />
+    <Content Include="Assets\Audios\turnon.wav" />
+    <Content Include="Assets\Audios\user.wav" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
