@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace NSUI.Controls
 {
-    public class NSCircleFocusVisual : Control
+    public class NSCircleFocusVisual : Control, INSFocusVisual
     {
         public NSCircleFocusVisual()
         {

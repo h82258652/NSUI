@@ -1,14 +1,14 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NSUI.Controls
 {
     [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(NSFocusVisual))]
-    public class NSButton : Button
+    public class NSButton : NSButtonBase
     {
         private const string FocusVisualTemplateName = "PART_FocusVisual";
-        private NSFocusVisual _focusVisual;
+
+        private INSFocusVisual _focusVisual;
 
         static NSButton()
         {
@@ -19,7 +19,7 @@ namespace NSUI.Controls
         {
             base.OnApplyTemplate();
 
-            _focusVisual = (NSFocusVisual)GetTemplateChild(FocusVisualTemplateName);
+            _focusVisual = (INSFocusVisual)GetTemplateChild(FocusVisualTemplateName);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

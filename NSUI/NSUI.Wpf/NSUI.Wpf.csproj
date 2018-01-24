@@ -32,6 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -73,7 +76,9 @@
   <ItemGroup>
     <Compile Include="Animation\CubicBezierEase.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSButton.cs" />
+    <Compile Include="Controls\NSButtonBase.cs" />
     <Compile Include="Controls\NSCircleButton.cs" />
     <Compile Include="Controls\NSCircleFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisual.cs" />
@@ -94,6 +99,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -101,6 +107,38 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Styles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Audios\album.wav" />
+    <Resource Include="Assets\Audios\bing.wav" />
+    <Resource Include="Assets\Audios\border.wav" />
+    <Resource Include="Assets\Audios\controller.wav" />
+    <Resource Include="Assets\Audios\dada0.wav" />
+    <Resource Include="Assets\Audios\dada1.wav" />
+    <Resource Include="Assets\Audios\dada2.wav" />
+    <Resource Include="Assets\Audios\dada3.wav" />
+    <Resource Include="Assets\Audios\dodo.wav" />
+    <Resource Include="Assets\Audios\enter &amp; back.wav" />
+    <Resource Include="Assets\Audios\error.wav" />
+    <Resource Include="Assets\Audios\eshop.wav" />
+    <Resource Include="Assets\Audios\eshopintro.wav" />
+    <Resource Include="Assets\Audios\home.wav" />
+    <Resource Include="Assets\Audios\icons.wav" />
+    <Resource Include="Assets\Audios\jig0.wav" />
+    <Resource Include="Assets\Audios\jig1.wav" />
+    <Resource Include="Assets\Audios\klick.wav" />
+    <Resource Include="Assets\Audios\loading.wav" />
+    <Resource Include="Assets\Audios\news.wav" />
+    <Resource Include="Assets\Audios\nock.wav" />
+    <Resource Include="Assets\Audios\popup+runtitle.wav" />
+    <Resource Include="Assets\Audios\select.wav" />
+    <Resource Include="Assets\Audios\settings.wav" />
+    <Resource Include="Assets\Audios\standby.wav" />
+    <Resource Include="Assets\Audios\thisone.wav" />
+    <Resource Include="Assets\Audios\tick.wav" />
+    <Resource Include="Assets\Audios\turnoff.wav" />
+    <Resource Include="Assets\Audios\turnon.wav" />
+    <Resource Include="Assets\Audios\user.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,26 +1,33 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NSUI.Controls
 {
     [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(NSCircleFocusVisual))]
-    public class NSCircleButton : Button
+    public class NSCircleButton : NSButtonBase
     {
+        public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(NSCircleButton), new PropertyMetadata(default(double)));
+
         private const string FocusVisualTemplateName = "PART_FocusVisual";
 
-        private NSCircleFocusVisual _focusVisual;
+        private INSFocusVisual _focusVisual;
 
         static NSCircleButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NSCircleButton), new FrameworkPropertyMetadata(typeof(NSCircleButton)));
         }
 
+        public double StrokeThickness
+        {
+            get => (double)GetValue(StrokeThicknessProperty);
+            set => SetValue(StrokeThicknessProperty, value);
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            _focusVisual = (NSCircleFocusVisual)GetTemplateChild(FocusVisualTemplateName);
+            _focusVisual = (INSFocusVisual)GetTemplateChild(FocusVisualTemplateName);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

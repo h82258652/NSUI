@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="using:NSUI.Controls">
     <Style TargetType="controls:NSCircleFocusVisual">
+        <Setter Property="Margin"
+                Value="-1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSCircleFocusVisual">
@@ -9,6 +11,9 @@
                         <Shape.Stroke>
                             <SolidColorBrush />
                         </Shape.Stroke>
+                        <UIElement.RenderTransform>
+                            <TranslateTransform />
+                        </UIElement.RenderTransform>
                     </Ellipse>
                 </ControlTemplate>
             </Setter.Value>

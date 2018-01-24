@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace NSUI.Controls
 {
-    public class NSFocusVisual : Control
+    public class NSFocusVisual : Control, INSFocusVisual
     {
         public NSFocusVisual()
         {
@@ -36,16 +36,35 @@ namespace NSUI.Controls
 
         public void ShakeLeft()
         {
+            var storyboard = new Storyboard();
+            var animation = new DoubleAnimation();
+            animation.From = 0;
+            storyboard.Children.Add(animation);
+            storyboard.Begin();
+
+
             // TODO
         }
 
         public void ShakeRight()
         {
+            var storyboard = new Storyboard();
+            var animation = new DoubleAnimation();
+            animation.From = 0;
+            storyboard.Children.Add(animation);
+            storyboard.Begin();
+
             // TODO
         }
 
         public void ShakeUp()
         {
+            var storyboard = new Storyboard();
+            var animation = new DoubleAnimation();
+            animation.From = 0;
+            storyboard.Children.Add(animation);
+            storyboard.Begin();
+
             // TODO
         }
     }

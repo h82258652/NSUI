@@ -107,7 +107,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSButton.cs" />
+    <Compile Include="Controls\NSButtonBase.cs" />
     <Compile Include="Controls\NSCircleButton.cs" />
     <Compile Include="Controls\NSCircleFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisual.cs" />
@@ -117,6 +119,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="NAudio">
+      <Version>1.8.4</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +151,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\" />
     <Folder Include="Styles\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

@@ -18,6 +18,8 @@
             <controls:NSButton Width="150"
                                Margin="0,20,0,0"
                                Content="B" />
+            <Rectangle Width="100"
+                       Height="100" StrokeThickness="1" Stroke="Red" StrokeLineJoin="Round"></Rectangle>
         </StackPanel>
     </Grid>
 </Window>

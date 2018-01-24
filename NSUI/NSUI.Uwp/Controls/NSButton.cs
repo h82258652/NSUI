@@ -8,7 +8,7 @@ namespace NSUI.Controls
     {
         private const string FocusVisualTemplateName = "PART_FocusVisual";
 
-        private NSFocusVisual _focusVisual;
+        private INSFocusVisual _focusVisual;
 
         public NSButton()
         {
@@ -18,8 +18,8 @@ namespace NSUI.Controls
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-             
-            _focusVisual = (NSFocusVisual)GetTemplateChild(FocusVisualTemplateName);
+
+            _focusVisual = (INSFocusVisual)GetTemplateChild(FocusVisualTemplateName);
         }
 
         protected override void OnKeyDown(KeyRoutedEventArgs e)

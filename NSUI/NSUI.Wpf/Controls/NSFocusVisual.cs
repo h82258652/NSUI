@@ -1,16 +1,16 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using NSUI.Animation;
 
 namespace NSUI.Controls
 {
-    [TemplatePart(Name = VisualElementTemplateName, Type = typeof(UIElement))]
-    public class NSFocusVisual : Control
+    [TemplatePart(Name = VisualElementTemplateName, Type = typeof(FrameworkElement))]
+    public class NSFocusVisual : Control, INSFocusVisual
     {
         private const string VisualElementTemplateName = "PART_VisualElement";
 
-        private UIElement _visualElement;
+        private FrameworkElement _visualElement;
 
         static NSFocusVisual()
         {
@@ -21,7 +21,9 @@ namespace NSUI.Controls
         {
             base.OnApplyTemplate();
 
-            _visualElement = (UIElement)GetTemplateChild(VisualElementTemplateName);
+            _visualElement = (FrameworkElement)GetTemplateChild(VisualElementTemplateName);
+            Debug.Assert(_visualElement != null);
+            ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
         }
 
         public void ShakeDown()
@@ -37,8 +39,10 @@ namespace NSUI.Controls
                 From = 0,
                 To = Constants.FocusVisualShakeToValue,
                 Duration = Constants.FocusVisualShakeDuration,
+                AutoReverse = true,
                 EasingFunction = new BackEase()
                 {
+                    EasingMode = EasingMode.EaseInOut
                 }
             };
             Storyboard.SetTarget(animation, _visualElement);
@@ -61,10 +65,9 @@ namespace NSUI.Controls
                 To = 0 - Constants.FocusVisualShakeToValue,
                 Duration = Constants.FocusVisualShakeDuration,
                 AutoReverse = true,
-                EasingFunction = new CubicBezierEase()
+                EasingFunction = new BackEase()
                 {
-                    ControlPoint1 = new Point(.36, .07),
-                    ControlPoint2 = new Point(.19, .97)
+                    EasingMode = EasingMode.EaseIn
                 }
             };
             Storyboard.SetTarget(animation, _visualElement);
@@ -86,8 +89,10 @@ namespace NSUI.Controls
                 From = 0,
                 To = Constants.FocusVisualShakeToValue,
                 Duration = Constants.FocusVisualShakeDuration,
+                AutoReverse = true,
                 EasingFunction = new BackEase()
                 {
+                    EasingMode = EasingMode.EaseInOut
                 }
             };
             Storyboard.SetTarget(animation, _visualElement);
@@ -109,8 +114,10 @@ namespace NSUI.Controls
                 From = 0,
                 To = 0 - Constants.FocusVisualShakeToValue,
                 Duration = Constants.FocusVisualShakeDuration,
+                AutoReverse = true,
                 EasingFunction = new BackEase()
                 {
+                    EasingMode = EasingMode.EaseInOut
                 }
             };
             Storyboard.SetTarget(animation, _visualElement);

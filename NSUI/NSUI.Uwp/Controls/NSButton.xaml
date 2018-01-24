@@ -45,5 +45,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="UseSystemFocusVisuals"
+                Value="False" />
     </Style>
 </ResourceDictionary>

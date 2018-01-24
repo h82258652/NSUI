@@ -7,6 +7,6 @@ namespace NSUI
     {
         public const double FocusVisualShakeToValue = 20;
 
-        public static readonly Duration FocusVisualShakeDuration = TimeSpan.FromSeconds(5);
+        public static readonly Duration FocusVisualShakeDuration = TimeSpan.FromSeconds(1);
     }
 }
