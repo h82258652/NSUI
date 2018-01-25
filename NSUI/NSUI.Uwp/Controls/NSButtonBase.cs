@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using NAudio.Win8.Wave.WaveOutputs;
@@ -34,10 +33,7 @@ namespace NSUI.Controls
 
             var audioFile = await StorageFile.GetFileFromApplicationUriAsync(audioSource);
 
-            //var stream = await audioFile.OpenStreamForReadAsync();
-
             var wasapiOut = new WasapiOutRT(AudioClientShareMode.Shared, 200);
-            ;
             wasapiOut.Init(() => new MediaFoundationReader(audioFile.Path));
             wasapiOut.Play();
         }

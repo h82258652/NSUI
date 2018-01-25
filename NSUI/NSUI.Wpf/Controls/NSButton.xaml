@@ -2,8 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:NSUI.Controls">
     <Style TargetType="controls:NSButton">
+        <Setter Property="Background"
+                Value="Gray" />
+        <Setter Property="BorderBrush"
+                Value="Black" />
+        <Setter Property="BorderThickness"
+                Value="1" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSButton">
@@ -48,5 +58,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
     </Style>
 </ResourceDictionary>

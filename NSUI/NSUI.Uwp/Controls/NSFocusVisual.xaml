@@ -7,9 +7,25 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSFocusVisual">
-                    <Rectangle StrokeThickness="1">
+                    <Rectangle x:Name="PART_VisualElement"
+                               StrokeLineJoin="Round"
+                               StrokeThickness="1">
+                        <FrameworkElement.Resources>
+                            <ResourceDictionary>
+                                <Storyboard x:Key="VisualBrushStoryboard">
+                                    <ColorAnimation AutoReverse="True"
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="VisualBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="#00FFCC"
+                                                    To="#00B7FF"
+                                                    Duration="0:0:1" />
+                                </Storyboard>
+                            </ResourceDictionary>
+                        </FrameworkElement.Resources>
                         <Shape.Stroke>
-                            <SolidColorBrush Color="Red" />
+                            <SolidColorBrush x:Name="VisualBrush"
+                                             Color="#00FFCC" />
                         </Shape.Stroke>
                         <UIElement.RenderTransform>
                             <TranslateTransform />

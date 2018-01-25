@@ -1,11 +1,10 @@
 ﻿using Windows.System;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
 namespace NSUI.Controls
 {
-    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(NSCircleFocusVisual))]
+    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public class NSCircleButton : NSButtonBase
     {
         public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(NSCircleButton), new PropertyMetadata(default(double)));

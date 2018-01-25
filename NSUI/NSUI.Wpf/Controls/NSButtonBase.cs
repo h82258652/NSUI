@@ -36,7 +36,6 @@ namespace NSUI.Controls
 
             var wasapiOut = new WasapiOut();
             wasapiOut.Init(new WaveFileReader(audio.Stream));
-            //wasapiOut.Init(new RawSourceWaveStream(audio.Stream, new WaveFormat()));
             wasapiOut.Play();
         }
     }

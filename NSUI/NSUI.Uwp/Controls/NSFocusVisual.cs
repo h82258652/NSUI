@@ -1,15 +1,16 @@
-﻿using System;
+﻿using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
 namespace NSUI.Controls
 {
+    [TemplatePart(Name = VisualElementTemplateName, Type = typeof(FrameworkElement))]
     public class NSFocusVisual : Control, INSFocusVisual
     {
-        private const double ShakeToValue = 8;
+        private const string VisualElementTemplateName = "PART_VisualElement";
 
-        private static readonly Duration ShakeDuration = TimeSpan.FromSeconds(0.3);
+        private FrameworkElement _visualElement;
 
         public NSFocusVisual()
         {
@@ -18,14 +19,12 @@ namespace NSUI.Controls
 
         public void ShakeDown()
         {
-            Storyboard storyboard = new Storyboard();
+            var storyboard = new Storyboard();
             DoubleAnimation animation = new DoubleAnimation();
             animation.From = 0;
-            animation.To = ShakeToValue;
-            animation.Duration = ShakeDuration;
-            animation.EasingFunction = new BackEase()
-            {
-            };
+            animation.To = Constants.FocusVisualShakeToValue;
+            animation.Duration = Constants.FocusVisualShakeDuration;
+
             storyboard.Children.Add(animation);
             storyboard.Begin();
 
@@ -50,6 +49,8 @@ namespace NSUI.Controls
             var storyboard = new Storyboard();
             var animation = new DoubleAnimation();
             animation.From = 0;
+            animation.To = Constants.FocusVisualShakeToValue;
+            animation.Duration = Constants.FocusVisualShakeDuration;
             storyboard.Children.Add(animation);
             storyboard.Begin();
 
@@ -61,10 +62,20 @@ namespace NSUI.Controls
             var storyboard = new Storyboard();
             var animation = new DoubleAnimation();
             animation.From = 0;
+            animation.To = 0 - Constants.FocusVisualShakeToValue;
             storyboard.Children.Add(animation);
             storyboard.Begin();
 
             // TODO
+        }
+
+        protected override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _visualElement = (FrameworkElement)GetTemplateChild(VisualElementTemplateName);
+            Debug.Assert(_visualElement != null);
+            ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
         }
     }
 }

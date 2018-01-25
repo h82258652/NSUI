@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace NSUI.Controls
 {
-    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(NSFocusVisual))]
+    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public class NSButton : NSButtonBase
     {
         private const string FocusVisualTemplateName = "PART_FocusVisual";

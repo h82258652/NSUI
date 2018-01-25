@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace NSUI.Controls
 {
-    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(NSCircleFocusVisual))]
+    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public class NSCircleButton : NSButtonBase
     {
         public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(NSCircleButton), new PropertyMetadata(default(double)));

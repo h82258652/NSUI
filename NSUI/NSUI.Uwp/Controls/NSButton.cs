@@ -1,9 +1,10 @@
 ﻿using Windows.System;
-using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Input;
 
 namespace NSUI.Controls
 {
+    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public class NSButton : NSButtonBase
     {
         private const string FocusVisualTemplateName = "PART_FocusVisual";

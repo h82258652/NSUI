@@ -5,8 +5,13 @@ using System.Windows.Media.Animation;
 
 namespace NSUI.Controls
 {
+    [TemplatePart(Name = VisualElementTemplateName, Type = typeof(FrameworkElement))]
     public class NSCircleFocusVisual : Control, INSFocusVisual
     {
+        private const string VisualElementTemplateName = "PART_VisualElement";
+
+        private FrameworkElement _visualElement;
+
         static NSCircleFocusVisual()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NSCircleFocusVisual), new FrameworkPropertyMetadata(typeof(NSCircleFocusVisual)));
@@ -21,10 +26,6 @@ namespace NSUI.Controls
             ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
         }
 
-        private FrameworkElement _visualElement;
-
-        private const string VisualElementTemplateName = "PART_VisualElement";
-
         public void ShakeDown()
         {
             if (_visualElement == null)
@@ -33,10 +34,14 @@ namespace NSUI.Controls
             }
 
             var storyboard = new Storyboard();
-            var animation = new DoubleAnimation();
+            var animation = new DoubleAnimation()
+            {
+                From = 0,
+                To = Constants.FocusVisualShakeToValue,
+                Duration = Constants.FocusVisualShakeDuration
+            };
             storyboard.Children.Add(animation);
             storyboard.Begin();
-
 
             // TODO
         }
@@ -62,7 +67,10 @@ namespace NSUI.Controls
             }
 
             var storyboard = new Storyboard();
-            var animation = new DoubleAnimation();
+            var animation = new DoubleAnimation()
+            {
+                From = 0
+            };
             storyboard.Children.Add(animation);
             storyboard.Begin();
 
