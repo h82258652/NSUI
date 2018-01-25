@@ -1,26 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace NSUI.Animation
 {
+    [Obsolete("not used now", true)]
     public sealed class CubicBezierEase : IEasingFunction
     {
-        public Point ControlPoint1
-        {
-            get;
-            set;
-        }
+        public Point ControlPoint1 { get; set; }
 
-        public Point ControlPoint2
-        {
-            get;
-            set;
-        }
+        public Point ControlPoint2 { get; set; }
 
         public double Ease(double normalizedTime)
         {

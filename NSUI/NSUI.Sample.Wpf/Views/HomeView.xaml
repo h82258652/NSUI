@@ -1,0 +1,59 @@
+﻿<Page x:Class="NSUI.Sample.Views.HomeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="clr-namespace:NSUI.Controls;assembly=NSUI.Wpf"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:NSUI.Sample.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="HomeView"
+      d:DesignHeight="720"
+      d:DesignWidth="1280"
+      mc:Ignorable="d">
+    <Grid Background="#2D2D2D">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <!--  Status Bar  -->
+            <controls:NSCircleButton>
+                <Image />
+            </controls:NSCircleButton>
+        </Grid>
+        <Grid Grid.Row="1">
+            <!--  Games  -->
+        </Grid>
+        <Grid Grid.Row="2">
+            <!--  Apps & Settings  -->
+            <StackPanel HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                <controls:NSCircleButton Content="A" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <!--  Actions Bar  -->
+            <Border Margin="20,0,20,0"
+                    Padding="20,12,20,12"
+                    BorderBrush="#CACACA"
+                    BorderThickness="0,1,0,0">
+                <Grid>
+                    <Grid HorizontalAlignment="Left"
+                          Background="White">
+                        <Image Source="/Assets/Images/switch.light.png"
+                               Stretch="None" />
+                    </Grid>
+                    <StackPanel HorizontalAlignment="Right"
+                                Background="#2D2D2D"
+                                Orientation="Horizontal">
+                        <controls:NSActionBarButton AutomationProperties.AccessKey="B"
+                                                    Content="Cancel" />
+                        <controls:NSActionBarButton AutomationProperties.AccessKey="A"
+                                                    Content="OK" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

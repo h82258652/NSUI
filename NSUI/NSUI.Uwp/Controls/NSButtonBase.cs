@@ -3,16 +3,23 @@ using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using NAudio.Win8.Wave.WaveOutputs;
 using Windows.Storage;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace NSUI.Controls
 {
-    public class NSButtonBase : Button
+    [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
+    public abstract class NSButtonBase : Button
     {
         public static readonly DependencyProperty AudioSourceProperty = DependencyProperty.Register(nameof(AudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(new Uri("ms-appx:///NSUI.Uwp/Assets/Audios/settings.wav")));
 
-        public NSButtonBase()
+        private const string FocusVisualTemplateName = "PART_FocusVisual";
+
+        private INSFocusVisual _focusVisual;
+
+        protected NSButtonBase()
         {
             Click += NSButtonBase_Click;
         }
@@ -21,6 +28,57 @@ namespace NSUI.Controls
         {
             get => (Uri)GetValue(AudioSourceProperty);
             set => SetValue(AudioSourceProperty, value);
+        }
+
+        protected override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _focusVisual = (INSFocusVisual)GetTemplateChild(FocusVisualTemplateName);
+        }
+
+        protected override void OnKeyDown(KeyRoutedEventArgs e)
+        {
+            base.OnKeyDown(e);
+
+            if (_focusVisual == null)
+            {
+                return;
+            }
+
+            var key = e.Key;
+            if (key == VirtualKey.Left)
+            {
+                var leftFocusableElement = FocusManager.FindNextFocusableElement(FocusNavigationDirection.Left);
+                if (leftFocusableElement == null || ReferenceEquals(this, leftFocusableElement))
+                {
+                    _focusVisual.ShakeLeft();
+                }
+            }
+            else if (key == VirtualKey.Up)
+            {
+                var upFocusableElement = FocusManager.FindNextFocusableElement(FocusNavigationDirection.Up);
+                if (upFocusableElement == null || ReferenceEquals(this, upFocusableElement))
+                {
+                    _focusVisual.ShakeUp();
+                }
+            }
+            else if (key == VirtualKey.Right)
+            {
+                var rightFocusableElement = FocusManager.FindNextFocusableElement(FocusNavigationDirection.Right);
+                if (rightFocusableElement == null || ReferenceEquals(this, rightFocusableElement))
+                {
+                    _focusVisual.ShakeRight();
+                }
+            }
+            else if (key == VirtualKey.Down)
+            {
+                var downFocusableElement = FocusManager.FindNextFocusableElement(FocusNavigationDirection.Down);
+                if (downFocusableElement == null || ReferenceEquals(this, downFocusableElement))
+                {
+                    _focusVisual.ShakeDown();
+                }
+            }
         }
 
         private async void NSButtonBase_Click(object sender, RoutedEventArgs e)
