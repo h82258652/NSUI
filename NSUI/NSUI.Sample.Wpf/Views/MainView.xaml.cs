@@ -10,12 +10,7 @@ namespace NSUI.Sample.Views
         {
             InitializeComponent();
         }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Z");
-        }
-
+        
         private void MainView_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)

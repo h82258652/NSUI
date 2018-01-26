@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,6 +21,8 @@ namespace NSUI.Controls
         {
             Click += NSButtonBase_Click;
         }
+
+        public event EventHandler ClickEffectEnded;
 
         public Uri AudioSource
         {
@@ -76,24 +80,59 @@ namespace NSUI.Controls
                 }
             }
         }
-        
-        private void NSButtonBase_Click(object sender, RoutedEventArgs e)
+
+        protected Task PlayAudioAsync()
         {
             var audioSource = AudioSource;
             if (audioSource == null)
             {
-                return;
+                return Task.CompletedTask;
             }
 
             var audio = Application.GetResourceStream(audioSource);
             if (audio == null)
             {
-                return;
+                return Task.CompletedTask;
             }
 
-            var wasapiOut = new WasapiOut();
-            wasapiOut.Init(new WaveFileReader(audio.Stream));
-            wasapiOut.Play();
+            return PlayAudioAsync(audio.Stream);
+        }
+
+        protected Task PlayAudioAsync(Stream audioSource)
+        {
+            if (audioSource == null)
+            {
+                throw new ArgumentNullException(nameof(audioSource));
+            }
+
+            var tcs = new TaskCompletionSource<object>();
+            using (var wasapiOut = new WasapiOut())
+            {
+                void PlaybackStopped(object sender, StoppedEventArgs e)
+                {
+                    wasapiOut.PlaybackStopped -= PlaybackStopped;
+                    tcs.SetResult(null);
+                }
+                wasapiOut.PlaybackStopped += PlaybackStopped;
+                using (var waveProvider = new WaveFileReader(audioSource))
+                {
+                    wasapiOut.Init(waveProvider);
+                    wasapiOut.Play();
+                }
+            }
+            return tcs.Task;
+        }
+
+        protected virtual Task PlayClickEffectAsync()
+        {
+            return PlayAudioAsync();
+        }
+
+        private async void NSButtonBase_Click(object sender, RoutedEventArgs e)
+        {
+            await PlayClickEffectAsync();
+
+            ClickEffectEnded?.Invoke(this, EventArgs.Empty);
         }
     }
 }

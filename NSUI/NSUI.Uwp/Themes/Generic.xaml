@@ -1,23 +1,8 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               >
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSButton.xaml" />
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSCircleButton.xaml" />
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSCircleFocusVisual.xaml" />
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSFocusVisual.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
-    <Style TargetType="local2:NSActionBarButton" xmlns:local2="using:NSUI.Controls">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local2:NSActionBarButton">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>

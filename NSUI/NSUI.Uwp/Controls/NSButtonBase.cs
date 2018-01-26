@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using NAudio.Win8.Wave.WaveOutputs;
@@ -23,6 +25,8 @@ namespace NSUI.Controls
         {
             Click += NSButtonBase_Click;
         }
+
+        public event EventHandler ClickEffectEnded;
 
         public Uri AudioSource
         {
@@ -81,7 +85,32 @@ namespace NSUI.Controls
             }
         }
 
-        private async void NSButtonBase_Click(object sender, RoutedEventArgs e)
+        protected Task PlayAudioAsync(Stream audioSource)
+        {
+            if (audioSource == null)
+            {
+                throw new ArgumentNullException(nameof(audioSource));
+            }
+
+            var tcs = new TaskCompletionSource<object>();
+            using (var wasapiOut = new WasapiOutRT(AudioClientShareMode.Shared, 200))
+            {
+                void PlaybackStopped(object sender, StoppedEventArgs e)
+                {
+                    wasapiOut.PlaybackStopped -= PlaybackStopped;
+                    tcs.SetResult(null);
+                }
+                wasapiOut.PlaybackStopped += PlaybackStopped;
+                using (var waveProvider = new MediaFoundationReaderUniversal(audioSource.AsRandomAccessStream()))
+                {
+                    wasapiOut.Init(() => waveProvider);
+                    wasapiOut.Play();
+                }
+            }
+            return tcs.Task;
+        }
+
+        protected async Task PlayAudioAsync()
         {
             var audioSource = AudioSource;
             if (audioSource == null)
@@ -89,11 +118,22 @@ namespace NSUI.Controls
                 return;
             }
 
-            var audioFile = await StorageFile.GetFileFromApplicationUriAsync(audioSource);
+            var audio = await StorageFile.GetFileFromApplicationUriAsync(audioSource);
+            var audioStream = await audio.OpenStreamForReadAsync();
 
-            var wasapiOut = new WasapiOutRT(AudioClientShareMode.Shared, 200);
-            wasapiOut.Init(() => new MediaFoundationReader(audioFile.Path));
-            wasapiOut.Play();
+            await PlayAudioAsync(audioStream);
+        }
+
+        protected virtual Task PlayClickEffectAsync()
+        {
+            return PlayAudioAsync();
+        }
+
+        private async void NSButtonBase_Click(object sender, RoutedEventArgs e)
+        {
+            await PlayClickEffectAsync();
+
+            ClickEffectEnded?.Invoke(this, EventArgs.Empty);
         }
     }
 }
