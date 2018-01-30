@@ -1,0 +1,46 @@
+﻿<Page x:Class="NSUI.Sample.Views.HomeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:NSUI.Sample.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:NSUI.Controls"
+      mc:Ignorable="d">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <!-- Status Bar  -->
+                <Grid>
+                    <!-- User -->
+                    <controls:NSCircleButton />
+                </Grid>
+                <Grid>
+                    <!-- Time -->
+                    <TextBlock Text="15:25"></TextBlock>
+                </Grid>
+                <Grid>
+                    <!-- Battery -->
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <!-- Games-->
+            </Grid>
+            <Grid Grid.Row="2">
+                <!-- Apps & Settings -->
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <controls:NSCircleButton></controls:NSCircleButton>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <!-- Actions Bar -->
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
