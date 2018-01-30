@@ -11,7 +11,7 @@ namespace NSUI.Controls
     [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public abstract class NSButtonBase : Button
     {
-        public static readonly DependencyProperty AudioSourceProperty = DependencyProperty.Register(nameof(AudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(new Uri("pack://application:,,,/NSUI.Wpf;component/Assets/Audios/settings.wav")));
+        public static readonly DependencyProperty AudioSourceProperty = DependencyProperty.Register(nameof(AudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(new Uri("pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav")));
 
         private const string FocusVisualTemplateName = "PART_FocusVisual";
 
