@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Animation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace NSUI.Controls
 {
@@ -11,17 +11,6 @@ namespace NSUI.Controls
         private const string VisualElementTemplateName = "PART_VisualElement";
 
         private FrameworkElement _visualElement;
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-
-            _visualElement = (FrameworkElement)GetTemplateChild(VisualElementTemplateName);
-            if (_visualElement != null)
-            {
-                ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
-            }
-        }
 
         public void ShakeDown()
         {
@@ -53,7 +42,7 @@ namespace NSUI.Controls
                 Value = 0
             });
             Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)"));
+            Storyboard.SetTargetProperty(animation, "(UIElement.RenderTransform).(TranslateTransform.Y)");
             storyboard.Children.Add(animation);
             storyboard.Begin();
         }
@@ -88,7 +77,7 @@ namespace NSUI.Controls
                 Value = 0
             });
             Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.X)"));
+            Storyboard.SetTargetProperty(animation, "(UIElement.RenderTransform).(TranslateTransform.X)");
             storyboard.Children.Add(animation);
             storyboard.Begin();
         }
@@ -123,7 +112,7 @@ namespace NSUI.Controls
                 Value = 0
             });
             Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.X)"));
+            Storyboard.SetTargetProperty(animation, "(UIElement.RenderTransform).(TranslateTransform.X)");
             storyboard.Children.Add(animation);
             storyboard.Begin();
         }
@@ -158,9 +147,20 @@ namespace NSUI.Controls
                 Value = 0
             });
             Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)"));
+            Storyboard.SetTargetProperty(animation, "(UIElement.RenderTransform).(TranslateTransform.Y)");
             storyboard.Children.Add(animation);
             storyboard.Begin();
+        }
+
+        protected override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _visualElement = (FrameworkElement)GetTemplateChild(VisualElementTemplateName);
+            if (_visualElement != null)
+            {
+                ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
+            }
         }
     }
 }

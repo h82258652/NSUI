@@ -7,9 +7,24 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSCircleFocusVisual">
-                    <Ellipse StrokeThickness="1">
+                    <Ellipse x:Name="PART_VisualElement"
+                             StrokeThickness="1">
+                        <FrameworkElement.Resources>
+                            <ResourceDictionary>
+                                <Storyboard x:Key="VisualBrushStoryboard">
+                                    <ColorAnimation AutoReverse="True"
+                                                    RepeatBehavior="Forever"
+                                                    Storyboard.TargetName="VisualBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    From="#00FFCC"
+                                                    To="#00B7FF"
+                                                    Duration="0:0:0.8" />
+                                </Storyboard>
+                            </ResourceDictionary>
+                        </FrameworkElement.Resources>
                         <Shape.Stroke>
-                            <SolidColorBrush />
+                            <SolidColorBrush x:Name="VisualBrush"
+                                             Color="#00FFCC" />
                         </Shape.Stroke>
                         <UIElement.RenderTransform>
                             <TranslateTransform />

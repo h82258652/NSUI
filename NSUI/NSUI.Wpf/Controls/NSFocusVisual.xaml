@@ -21,7 +21,7 @@
                                                     Storyboard.TargetProperty="Color"
                                                     From="#00FFCC"
                                                     To="#00B7FF"
-                                                    Duration="0:0:1" />
+                                                    Duration="0:0:0.8" />
                                 </Storyboard>
                             </ResourceDictionary>
                         </FrameworkElement.Resources>
