@@ -91,6 +91,7 @@
     <Compile Include="Controls\NSCircleButton.cs" />
     <Compile Include="Controls\NSCircleFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisual.cs" />
+    <Compile Include="Controls\NSFocusVisualBase.cs" />
     <Compile Include="Controls\NSFrame.cs" />
     <Compile Include="NSTheme.cs" />
     <Compile Include="NSThemeManager.cs" />
