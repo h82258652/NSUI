@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using NSUI.Styles;
 
 namespace NSUI
 {
-    public class NSThemeManager : INotifyPropertyChanged
+    public class NSThemeManager : INSThemeManager
     {
+        private static readonly List<WeakReference<NSThemeManager>> ThemeManagers = new List<WeakReference<NSThemeManager>>();
         private static NSTheme _currentTheme;
-        private readonly List<WeakReference<NSThemeManager>> _themeManagers = new List<WeakReference<NSThemeManager>>();
 
         public NSThemeManager()
         {
-            _themeManagers.Add(new WeakReference<NSThemeManager>(this));
+            ThemeManagers.Add(new WeakReference<NSThemeManager>(this));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public static INSThemeManager Instance { get; } = new NSThemeManager();
 
         public NSTheme CurrentTheme
         {
@@ -26,19 +29,25 @@ namespace NSUI
                     return;
                 }
 
-                _currentTheme = value;
-                for (var i = _themeManagers.Count - 1; i >= 0; i--)
+                if (!Enum.IsDefined(typeof(NSTheme), value))
                 {
-                    var themeManagerReference = _themeManagers[i];
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                _currentTheme = value;
+                for (var i = ThemeManagers.Count - 1; i >= 0; i--)
+                {
+                    var themeManagerReference = ThemeManagers[i];
                     if (themeManagerReference.TryGetTarget(out var themeManager))
                     {
                         themeManager.PropertyChanged?.Invoke(themeManager, new PropertyChangedEventArgs(nameof(CurrentTheme)));
                     }
                     else
                     {
-                        _themeManagers.RemoveAt(i);
+                        ThemeManagers.RemoveAt(i);
                     }
                 }
+                NSThemeResourceDictionary.ChangeTheme(value);
             }
         }
     }

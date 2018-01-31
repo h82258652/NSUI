@@ -163,9 +163,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Assets\Audios\album.wav" />
     <Content Include="Assets\Audios\bing.wav" />
@@ -197,6 +195,9 @@
     <Content Include="Assets\Audios\turnoff.wav" />
     <Content Include="Assets\Audios\turnon.wav" />
     <Content Include="Assets\Audios\user.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Nintendo Switch UI.ttf" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:NSUI.Controls">
+                    xmlns:controls="clr-namespace:NSUI.Controls"> 
     <Style TargetType="controls:NSButton">
         <Setter Property="Background"
-                Value="Gray" />
+                Value="{DynamicResource NSBackgroundBrush}" />
         <Setter Property="BorderBrush"
                 Value="Black" />
         <Setter Property="BorderThickness"
@@ -11,7 +11,7 @@
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="Foreground"
-                Value="White" />
+                Value="{DynamicResource NSForegroundBrush}" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Center" />
         <Setter Property="Template">

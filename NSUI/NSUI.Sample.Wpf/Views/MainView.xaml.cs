@@ -10,7 +10,7 @@ namespace NSUI.Sample.Views
         {
             InitializeComponent();
         }
-        
+
         private void MainView_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
@@ -20,6 +20,21 @@ namespace NSUI.Sample.Views
                 window.Content = frame;
                 frame.Navigate(new HomeView());
                 window.Show();
+            }
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var rBackground = Button2.Background;
+
+            var nsThemeManager = NSThemeManager.Instance;
+            if (nsThemeManager.CurrentTheme == NSTheme.Light)
+            {
+                nsThemeManager.CurrentTheme = NSTheme.Dark;
+            }
+            else
+            {
+                nsThemeManager.CurrentTheme = NSTheme.Light;
             }
         }
     }
