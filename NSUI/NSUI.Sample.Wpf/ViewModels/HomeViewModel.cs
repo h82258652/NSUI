@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
 using NSUI.Sample.Models;
 
 namespace NSUI.Sample.ViewModels
@@ -17,8 +18,10 @@ namespace NSUI.Sample.ViewModels
             };
         }
 
+        public List<Game> Games { get; }
+
         public IOperable Selected { get; set; }
 
-        public List<Game> Games { get; }
+        public ICommand UserProfileCommand { get; }
     }
 }
