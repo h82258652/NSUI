@@ -1,14 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:NSUI.Controls">
-    <Style TargetType="controls:NSCircleButton">
-        <Setter Property="FocusVisualStyle"
-                Value="{x:Null}" />
+    <Style TargetType="controls:NSAlbumButton">
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:NSCircleButton">
+                <ControlTemplate TargetType="controls:NSAlbumButton">
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
@@ -33,33 +31,12 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="0" />
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <Ellipse Fill="{TemplateBinding Background}"
-                                         SnapsToDevicePixels="True"
-                                         Stroke="{TemplateBinding BorderBrush}" />
-                                <ContentPresenter Margin="{TemplateBinding Padding}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  Focusable="False"
-                                                  RecognizesAccessKey="True"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                            </Grid>
-                            <TextBlock Grid.Row="1"
-                                       Margin="-65535"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       Foreground="{DynamicResource NSAccentBrush}"
-                                       Text="{TemplateBinding Label}">
-                                <TextBlock.RenderTransform>
-                                    <TranslateTransform />
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
-                        </Grid>
+                        <Ellipse x:Name="PART_Ripple"
+                                 RenderTransformOrigin="0.5,0.5">
+                            <UIElement.RenderTransform>
+                                <ScaleTransform />
+                            </UIElement.RenderTransform>
+                        </Ellipse>
                         <controls:NSCircleFocusVisual x:Name="PART_FocusVisual"
                                                       Visibility="Collapsed" />
                     </Grid>

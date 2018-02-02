@@ -107,6 +107,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controls\FloatingContentHost.cs" />
     <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSActionBarButton.cs" />
     <Compile Include="Controls\NSButton.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Controls\NSCircleFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisualBase.cs" />
+    <Compile Include="Controls\NSTextBox.cs" />
     <Compile Include="MediaFoundationReaderUniversal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\NSUI.Uwp.rd.xml" />

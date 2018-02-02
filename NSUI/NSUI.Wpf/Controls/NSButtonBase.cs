@@ -11,9 +11,37 @@ namespace NSUI.Controls
     [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public abstract class NSButtonBase : Button
     {
-        public static readonly DependencyProperty AudioSourceProperty = DependencyProperty.Register(nameof(AudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(new Uri("pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav")));
-
         private const string FocusVisualTemplateName = "PART_FocusVisual";
+
+
+        public static readonly DependencyProperty FocusAudioSourceProperty = DependencyProperty.Register(nameof(FocusAudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(default(Uri)));
+
+        public static readonly DependencyProperty ClickAudioSourceProperty = DependencyProperty.Register(nameof(ClickAudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(default(Uri)));
+
+        public Uri FocusAudioSource
+        {
+            get
+            {
+                return (Uri)GetValue(FocusAudioSourceProperty);
+            }
+            set
+            {
+                SetValue(FocusAudioSourceProperty,value);
+            }
+        }
+
+        public Uri ClickAudioSource
+        {
+            get
+            {
+                return (Uri)GetValue(ClickAudioSourceProperty);
+            }
+            set
+            {
+                SetValue(ClickAudioSourceProperty,value);
+            }
+        }
+
 
         private INSFocusVisual _focusVisual;
 
@@ -23,13 +51,7 @@ namespace NSUI.Controls
         }
 
         public event EventHandler ClickEffectEnded;
-
-        public Uri AudioSource
-        {
-            get => (Uri)GetValue(AudioSourceProperty);
-            set => SetValue(AudioSourceProperty, value);
-        }
-
+        
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -81,9 +103,9 @@ namespace NSUI.Controls
             }
         }
 
-        protected Task PlayAudioAsync()
+        protected Task PlayClickAudioAsync()
         {
-            var audioSource = AudioSource;
+            var audioSource = ClickAudioSource;
             if (audioSource == null)
             {
                 return Task.CompletedTask;
@@ -125,7 +147,7 @@ namespace NSUI.Controls
 
         protected virtual Task PlayClickEffectAsync()
         {
-            return PlayAudioAsync();
+            return PlayClickAudioAsync();
         }
 
         private async void NSButtonBase_Click(object sender, RoutedEventArgs e)

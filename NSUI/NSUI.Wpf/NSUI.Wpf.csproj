@@ -71,6 +71,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\NSAlbumButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NSBattery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,7 +103,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\NSScrollViewer.xaml">
+    <Page Include="Controls\NSSystemSettingsButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,6 +119,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\NSThemeStyle.ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\NSThemeStyle.Shared.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +137,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSActionBarButton.cs" />
+    <Compile Include="Controls\NSAlbumButton.cs" />
     <Compile Include="Controls\NSBattery.cs" />
     <Compile Include="Controls\NSButton.cs" />
     <Compile Include="Controls\NSButtonBase.cs" />
@@ -135,8 +148,9 @@
     <Compile Include="Controls\NSFocusVisualBase.cs" />
     <Compile Include="Controls\NSFrame.cs" />
     <Compile Include="Controls\NSPage.cs" />
-    <Compile Include="Controls\NSScrollViewer.cs" />
+    <Compile Include="Controls\NSSystemSettingsButton.cs" />
     <Compile Include="Controls\NSTextBox.cs" />
+    <Compile Include="Extensions\StoryboardExtensions.cs" />
     <Compile Include="INSThemeManager.cs" />
     <Compile Include="NSTheme.cs" />
     <Compile Include="NSThemeManager.cs" />
@@ -165,7 +179,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Audios\album.wav" />
     <Resource Include="Assets\Audios\bing.wav" />

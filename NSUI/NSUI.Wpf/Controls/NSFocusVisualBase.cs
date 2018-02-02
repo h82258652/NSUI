@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using NAudio.Wave;
 
 namespace NSUI.Controls
 {
@@ -25,6 +27,8 @@ namespace NSUI.Controls
 
         public void ShakeDown()
         {
+            PlayShakeAudio();
+
             if (_visualElement == null)
             {
                 return;
@@ -60,6 +64,8 @@ namespace NSUI.Controls
 
         public void ShakeLeft()
         {
+            PlayShakeAudio();
+
             if (_visualElement == null)
             {
                 return;
@@ -95,6 +101,8 @@ namespace NSUI.Controls
 
         public void ShakeRight()
         {
+            PlayShakeAudio();
+
             if (_visualElement == null)
             {
                 return;
@@ -130,6 +138,8 @@ namespace NSUI.Controls
 
         public void ShakeUp()
         {
+            PlayShakeAudio();
+
             if (_visualElement == null)
             {
                 return;
@@ -161,6 +171,20 @@ namespace NSUI.Controls
             Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)"));
             storyboard.Children.Add(animation);
             storyboard.Begin();
+        }
+
+        private static void PlayShakeAudio()
+        {
+            using (var wasapiOut = new WasapiOut())
+            {
+                var audio = Application.GetResourceStream(new Uri("pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav"));
+                Debug.Assert(audio != null);
+                using (var waveProvider = new WaveFileReader(audio.Stream))
+                {
+                    wasapiOut.Init(waveProvider);
+                    wasapiOut.Play();
+                }
+            }
         }
     }
 }

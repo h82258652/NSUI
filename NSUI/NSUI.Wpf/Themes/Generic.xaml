@@ -8,6 +8,5 @@
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSClock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSFocusVisual.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSPage.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSScrollViewer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
