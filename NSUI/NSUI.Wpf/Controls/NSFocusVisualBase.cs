@@ -27,150 +27,22 @@ namespace NSUI.Controls
 
         public void ShakeDown()
         {
-            PlayShakeAudio();
-
-            if (_visualElement == null)
-            {
-                return;
-            }
-
-            var storyboard = new Storyboard();
-            var animation = new DoubleAnimationUsingKeyFrames();
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0),
-                Value = 0
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.04),
-                Value = 8
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.08),
-                Value = -4
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.12),
-                Value = 0
-            });
-            Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)"));
-            storyboard.Children.Add(animation);
-            storyboard.Begin();
+            Shake(8, -4, "(UIElement.RenderTransform).(TranslateTransform.Y)");
         }
 
         public void ShakeLeft()
         {
-            PlayShakeAudio();
-
-            if (_visualElement == null)
-            {
-                return;
-            }
-
-            var storyboard = new Storyboard();
-            var animation = new DoubleAnimationUsingKeyFrames();
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0),
-                Value = 0
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.04),
-                Value = -8
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.08),
-                Value = 4
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.12),
-                Value = 0
-            });
-            Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.X)"));
-            storyboard.Children.Add(animation);
-            storyboard.Begin();
+            Shake(-8, 4, "(UIElement.RenderTransform).(TranslateTransform.X)");
         }
 
         public void ShakeRight()
         {
-            PlayShakeAudio();
-
-            if (_visualElement == null)
-            {
-                return;
-            }
-
-            var storyboard = new Storyboard();
-            var animation = new DoubleAnimationUsingKeyFrames();
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0),
-                Value = 0
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.04),
-                Value = 8
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.08),
-                Value = -4
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.12),
-                Value = 0
-            });
-            Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.X)"));
-            storyboard.Children.Add(animation);
-            storyboard.Begin();
+            Shake(8, -4, "(UIElement.RenderTransform).(TranslateTransform.X)");
         }
 
         public void ShakeUp()
         {
-            PlayShakeAudio();
-
-            if (_visualElement == null)
-            {
-                return;
-            }
-
-            var storyboard = new Storyboard();
-            var animation = new DoubleAnimationUsingKeyFrames();
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0),
-                Value = 0
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.04),
-                Value = -8
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.08),
-                Value = 4
-            });
-            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
-            {
-                KeyTime = TimeSpan.FromSeconds(0.12),
-                Value = 0
-            });
-            Storyboard.SetTarget(animation, _visualElement);
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TranslateTransform.Y)"));
-            storyboard.Children.Add(animation);
-            storyboard.Begin();
+            Shake(-8, 4, "(UIElement.RenderTransform).(TranslateTransform.Y)");
         }
 
         private static void PlayShakeAudio()
@@ -185,6 +57,43 @@ namespace NSUI.Controls
                     wasapiOut.Play();
                 }
             }
+        }
+
+        private void Shake(double value1, double value2, string propertyPath)
+        {
+            PlayShakeAudio();
+
+            if (_visualElement == null)
+            {
+                return;
+            }
+
+            var storyboard = new Storyboard();
+            var animation = new DoubleAnimationUsingKeyFrames();
+            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+            {
+                KeyTime = TimeSpan.FromSeconds(0),
+                Value = 0
+            });
+            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+            {
+                KeyTime = TimeSpan.FromSeconds(0.04),
+                Value = value1
+            });
+            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+            {
+                KeyTime = TimeSpan.FromSeconds(0.08),
+                Value = value2
+            });
+            animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+            {
+                KeyTime = TimeSpan.FromSeconds(0.12),
+                Value = 0
+            });
+            Storyboard.SetTarget(animation, _visualElement);
+            Storyboard.SetTargetProperty(animation, new PropertyPath(propertyPath));
+            storyboard.Children.Add(animation);
+            storyboard.Begin();
         }
     }
 }

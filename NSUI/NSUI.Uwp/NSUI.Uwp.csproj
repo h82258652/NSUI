@@ -110,6 +110,7 @@
     <Compile Include="Controls\FloatingContentHost.cs" />
     <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSActionBarButton.cs" />
+    <Compile Include="Controls\NSBattery.cs" />
     <Compile Include="Controls\NSButton.cs" />
     <Compile Include="Controls\NSButtonBase.cs" />
     <Compile Include="Controls\NSCircleButton.cs" />
@@ -135,6 +136,11 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Controls\NSBattery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="Controls\NSButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -151,6 +157,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Controls\NSFocusVisual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Controls\NSTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
