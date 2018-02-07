@@ -11,37 +11,10 @@ namespace NSUI.Controls
     [TemplatePart(Name = FocusVisualTemplateName, Type = typeof(INSFocusVisual))]
     public abstract class NSButtonBase : Button
     {
-        private const string FocusVisualTemplateName = "PART_FocusVisual";
-
-
+        public static readonly DependencyProperty ClickAudioSourceProperty = DependencyProperty.Register(nameof(ClickAudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(default(Uri)));
         public static readonly DependencyProperty FocusAudioSourceProperty = DependencyProperty.Register(nameof(FocusAudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(default(Uri)));
 
-        public static readonly DependencyProperty ClickAudioSourceProperty = DependencyProperty.Register(nameof(ClickAudioSource), typeof(Uri), typeof(NSButtonBase), new PropertyMetadata(default(Uri)));
-
-        public Uri FocusAudioSource
-        {
-            get
-            {
-                return (Uri)GetValue(FocusAudioSourceProperty);
-            }
-            set
-            {
-                SetValue(FocusAudioSourceProperty,value);
-            }
-        }
-
-        public Uri ClickAudioSource
-        {
-            get
-            {
-                return (Uri)GetValue(ClickAudioSourceProperty);
-            }
-            set
-            {
-                SetValue(ClickAudioSourceProperty,value);
-            }
-        }
-
+        private const string FocusVisualTemplateName = "PART_FocusVisual";
 
         private INSFocusVisual _focusVisual;
 
@@ -51,7 +24,19 @@ namespace NSUI.Controls
         }
 
         public event EventHandler ClickEffectEnded;
-        
+
+        public Uri ClickAudioSource
+        {
+            get => (Uri)GetValue(ClickAudioSourceProperty);
+            set => SetValue(ClickAudioSourceProperty, value);
+        }
+
+        public Uri FocusAudioSource
+        {
+            get => (Uri)GetValue(FocusAudioSourceProperty);
+            set => SetValue(FocusAudioSourceProperty, value);
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -103,23 +88,6 @@ namespace NSUI.Controls
             }
         }
 
-        protected Task PlayClickAudioAsync()
-        {
-            var audioSource = ClickAudioSource;
-            if (audioSource == null)
-            {
-                return Task.CompletedTask;
-            }
-
-            var audio = Application.GetResourceStream(audioSource);
-            if (audio == null)
-            {
-                return Task.CompletedTask;
-            }
-
-            return PlayAudioAsync(audio.Stream);
-        }
-
         protected Task PlayAudioAsync(Stream audioSource)
         {
             if (audioSource == null)
@@ -143,6 +111,23 @@ namespace NSUI.Controls
                 }
             }
             return tcs.Task;
+        }
+
+        protected Task PlayClickAudioAsync()
+        {
+            var audioSource = ClickAudioSource;
+            if (audioSource == null)
+            {
+                return Task.CompletedTask;
+            }
+
+            var audio = Application.GetResourceStream(audioSource);
+            if (audio == null)
+            {
+                return Task.CompletedTask;
+            }
+
+            return PlayAudioAsync(audio.Stream);
         }
 
         protected virtual Task PlayClickEffectAsync()

@@ -7,15 +7,10 @@ namespace NSUI.Controls
 {
     [TemplatePart(Name = BorderTemplateName, Type = typeof(Border))]
     [TemplatePart(Name = LimitTextBlockTemplateName, Type = typeof(TextBlock))]
-    [TemplateVisualState(GroupName = LineStateGroupName, Name = SingleLineStateName)]
-    [TemplateVisualState(GroupName = LineStateGroupName, Name = MultiLineStateName)]
     public class NSTextBox : TextBox
     {
         private const string BorderTemplateName = "PART_Border";
         private const string LimitTextBlockTemplateName = "PART_LimitTextBlock";
-        private const string LineStateGroupName = "LineStates";
-        private const string MultiLineStateName = "MultiLine";
-        private const string SingleLineStateName = "SingleLine";
 
         private Border _border;
         private TextBlock _limitTextBlock;
@@ -46,29 +41,26 @@ namespace NSUI.Controls
             UpdateVisual();
         }
 
+        private void MaxLengthChanged(object sender, EventArgs e)
+        {
+            UpdateVisual();
+        }
+
         private void NSTextBox_Loaded(object sender, RoutedEventArgs e)
         {
             DependencyPropertyDescriptor.FromProperty(AcceptsReturnProperty, typeof(NSTextBox)).AddValueChanged(this, AcceptsReturnChanged);
+            DependencyPropertyDescriptor.FromProperty(MaxLengthProperty, typeof(NSTextBox)).AddValueChanged(this, MaxLengthChanged);
         }
 
         private void NSTextBox_Unloaded(object sender, RoutedEventArgs e)
         {
             DependencyPropertyDescriptor.FromProperty(AcceptsReturnProperty, typeof(NSTextBox)).RemoveValueChanged(this, AcceptsReturnChanged);
+            DependencyPropertyDescriptor.FromProperty(MaxLengthProperty, typeof(NSTextBox)).RemoveValueChanged(this, MaxLengthChanged);
         }
 
         private void UpdateVisual()
         {
-            if (AcceptsReturn)
-            {
-                _border.BorderThickness = BorderThickness;
-                VisualStateManager.GoToState(this, MultiLineStateName, true);
-            }
-            else
-            {
-                _border.BorderThickness = new Thickness(0, 0, 0, BorderThickness.Bottom);
-                VisualStateManager.GoToState(this, SingleLineStateName, true);
-            }
-
+            _border.BorderThickness = AcceptsReturn ? BorderThickness : new Thickness(0, 0, 0, BorderThickness.Bottom);
             _limitTextBlock.Visibility = MaxLength > 0 ? Visibility.Visible : Visibility.Collapsed;
         }
     }

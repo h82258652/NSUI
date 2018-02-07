@@ -7,6 +7,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       d:DesignHeight="720"
       d:DesignWidth="1280"
+      DataContext="{Binding Source={StaticResource Locator}, Path=Home}"
       mc:Ignorable="d">
     <Grid Background="#2D2D2D">
         <Grid.RowDefinitions>
@@ -17,8 +18,12 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <!--  Status Bar  -->
-            <controls:NSCircleButton>
-                <Image />
+            <controls:NSCircleButton Command="{Binding Path=UserProfileCommand}">
+                <Ellipse>
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding Path=User.Username}" />
+                    </Ellipse.Fill>
+                </Ellipse>
             </controls:NSCircleButton>
         </Grid>
         <Grid Grid.Row="1">
@@ -43,7 +48,9 @@
             <!--  Apps & Settings  -->
             <StackPanel HorizontalAlignment="Center"
                         Orientation="Horizontal">
-                <controls:NSCircleButton Content="A" />
+                <controls:NSNewsButton />
+                <controls:NSAlbumButton />
+                <controls:NSSystemSettingsButton />
             </StackPanel>
         </Grid>
         <Grid Grid.Row="3">

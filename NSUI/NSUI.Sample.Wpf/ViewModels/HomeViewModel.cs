@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
 using NSUI.Sample.Models;
+using NSUI.Sample.Services;
 
 namespace NSUI.Sample.ViewModels
 {
@@ -8,6 +9,10 @@ namespace NSUI.Sample.ViewModels
     {
         public HomeViewModel()
         {
+            _userService = new UserService();
+
+            User = _userService.GetUser();
+
             Games = new List<Game>()
             {
                 new Game()
@@ -16,7 +21,14 @@ namespace NSUI.Sample.ViewModels
                     Icon = ""
                 }
             };
+
         }
+
+
+
+        private UserService _userService;
+
+        public User User { get; }
 
         public List<Game> Games { get; }
 

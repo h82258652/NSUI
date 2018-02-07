@@ -18,31 +18,22 @@
                               x:Name="Button2" Content="A" />
             
             <Grid Margin="0,20,0,0">
-                <controls:NSCircleButton Width="48" Height="48" Label="xxxxxxHello">
+                <controls:NSCircleButton  Label="xxxxxxHello">
                     <Ellipse>
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="https://www.cnblogs.com/images/logo_small.gif"></ImageBrush>
+                            <ImageBrush ImageSource="/Assets/Images/avatar.gif" />
                         </Ellipse.Fill>
                     </Ellipse>
                 </controls:NSCircleButton>
             </Grid>
-
-            <Grid   Margin="0,20,0,0">
-            <controls:NSButton Width="150"
-                               Content="B" />
-            <local:XxHost >
-                <Button Opacity="0.4" Content="wwwwwwwwwwwwwwwwDogewwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww" ></Button>
-                </local:XxHost>
-            </Grid>
+ 
+            <controls:NSClock></controls:NSClock>
+            <controls:NSClock></controls:NSClock>
             
-            <Grid Margin="0,20,0,0">
-                <controls:NSButton Width="150" Content="C"></controls:NSButton>
-                <local:FloatingContentControl>
-                    <Button Opacity="0.4" Content="哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇"></Button>
-                </local:FloatingContentControl>
+            
+            <Grid Margin="12">
+                <controls:NSTextBox AcceptsReturn="True" Text="hello" MaxLength="15"></controls:NSTextBox>
             </Grid>
-            <controls:NSClock></controls:NSClock>
-            <controls:NSClock></controls:NSClock>
         </StackPanel>
     </Grid>
 </Window>

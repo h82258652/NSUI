@@ -2,12 +2,40 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:NSUI.Controls">
     <Style TargetType="controls:NSTextBox">
+        <Setter Property="AllowDrop"
+                Value="True" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource NSForegroundBrush}" />
+        <Setter Property="BorderThickness"
+                Value="2" />
         <Setter Property="CaretBrush"
                 Value="{DynamicResource NSAccentBrush}" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="FontSize"
+                Value="22" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource NSForegroundBrush}" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="KeyboardNavigation.TabNavigation"
+                Value="None" />
+        <Setter Property="Padding"
+                Value="4" />
+        <Setter Property="ScrollViewer.PanningMode"
+                Value="VerticalFirst" />
+        <Setter Property="Stylus.IsFlicksEnabled"
+                Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSTextBox">
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
@@ -25,15 +53,21 @@
                                 <VisualState x:Name="Valid" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}"
-                               x:Name="PART_Border" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border x:Name="PART_Border"
+                                Grid.Row="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost"
                                           Focusable="False"
                                           HorizontalScrollBarVisibility="Hidden"
                                           VerticalScrollBarVisibility="Hidden" />
                         </Border>
-                        <TextBlock HorizontalAlignment="Right">
-                            <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text.Length}" /><Run Text="/" /><Run Text="{TemplateBinding MaxLength}" /></TextBlock>
+                        <TextBlock x:Name="PART_LimitTextBlock"
+                                   Grid.Row="1"
+                                   Margin="0,4,0,0"
+                                   HorizontalAlignment="Right">
+                            <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text.Length, Mode=OneWay}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MaxLength, Mode=OneWay}" /></TextBlock>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

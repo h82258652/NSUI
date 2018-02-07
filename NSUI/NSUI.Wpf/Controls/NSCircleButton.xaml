@@ -4,6 +4,10 @@
     <Style TargetType="controls:NSCircleButton">
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="Height"
+                Value="56" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Template">
@@ -14,7 +18,15 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedIndicator"
+                                                                       Storyboard.TargetProperty="Opacity">
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0"
+                                                                    Value="0.2" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Disabled" />
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="FocusStates">
@@ -34,11 +46,7 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="0" />
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
+                            <Grid>
                                 <Ellipse Fill="{TemplateBinding Background}"
                                          SnapsToDevicePixels="True"
                                          Stroke="{TemplateBinding BorderBrush}" />
@@ -48,17 +56,30 @@
                                                   Focusable="False"
                                                   RecognizesAccessKey="True"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Rectangle x:Name="PressedIndicator"
+                                           Fill="{DynamicResource NSAccentBrush}"
+                                           IsHitTestVisible="False"
+                                           Opacity="0" />
                             </Grid>
-                            <TextBlock Grid.Row="1"
-                                       Margin="-65535"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       Foreground="{DynamicResource NSAccentBrush}"
-                                       Text="{TemplateBinding Label}">
-                                <TextBlock.RenderTransform>
-                                    <TranslateTransform />
-                                </TextBlock.RenderTransform>
-                            </TextBlock>
+                            <Grid VerticalAlignment="Bottom"
+                                  RenderTransformOrigin="0.5,1">
+                                <UIElement.RenderTransform>
+                                    <ScaleTransform ScaleY="-1" />
+                                </UIElement.RenderTransform>
+                                <Grid RenderTransformOrigin="0.5,0.5">
+                                    <UIElement.RenderTransform>
+                                        <ScaleTransform ScaleY="-1" />
+                                    </UIElement.RenderTransform>
+                                    <TextBlock Margin="-65535"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource NSAccentBrush}"
+                                               Text="{TemplateBinding Label}">
+                                        <TextBlock.RenderTransform>
+                                            <TranslateTransform Y="20" />
+                                        </TextBlock.RenderTransform></TextBlock>
+                                </Grid>
+                            </Grid>
                         </Grid>
                         <controls:NSCircleFocusVisual x:Name="PART_FocusVisual"
                                                       Visibility="Collapsed" />
@@ -68,5 +89,7 @@
         </Setter>
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="Width"
+                Value="56" />
     </Style>
 </ResourceDictionary>

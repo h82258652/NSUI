@@ -99,6 +99,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\NSFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NSNewsButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NSPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,9 +152,11 @@
     <Compile Include="Controls\NSCircleButton.cs" />
     <Compile Include="Controls\NSCircleFocusVisual.cs" />
     <Compile Include="Controls\NSClock.cs" />
+    <Compile Include="Controls\NSControllersButton.cs" />
     <Compile Include="Controls\NSFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisualBase.cs" />
     <Compile Include="Controls\NSFrame.cs" />
+    <Compile Include="Controls\NSNewsButton.cs" />
     <Compile Include="Controls\NSPage.cs" />
     <Compile Include="Controls\NSSystemSettingsButton.cs" />
     <Compile Include="Controls\NSTextBox.cs" />
