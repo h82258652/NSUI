@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using WinRTXamlToolkit.AwaitableUI;
 
 namespace NSUI.Controls
 {

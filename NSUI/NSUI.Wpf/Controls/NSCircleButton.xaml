@@ -56,10 +56,10 @@
                                                   Focusable="False"
                                                   RecognizesAccessKey="True"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <Rectangle x:Name="PressedIndicator"
-                                           Fill="{DynamicResource NSAccentBrush}"
-                                           IsHitTestVisible="False"
-                                           Opacity="0" />
+                                <Ellipse x:Name="PressedIndicator"
+                                         Fill="{DynamicResource NSAccentBrush}"
+                                         IsHitTestVisible="False"
+                                         Opacity="0" />
                             </Grid>
                             <Grid VerticalAlignment="Bottom"
                                   RenderTransformOrigin="0.5,1">
