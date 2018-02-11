@@ -51,11 +51,9 @@ namespace NSUI.Controls
             {
                 var audio = Application.GetResourceStream(new Uri("pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav"));
                 Debug.Assert(audio != null);
-                using (var waveProvider = new WaveFileReader(audio.Stream))
-                {
-                    wasapiOut.Init(waveProvider);
-                    wasapiOut.Play();
-                }
+                var waveProvider = new WaveFileReader(audio.Stream);
+                wasapiOut.Init(waveProvider);
+                wasapiOut.Play();
             }
         }
 

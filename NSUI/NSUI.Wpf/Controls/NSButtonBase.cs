@@ -104,11 +104,9 @@ namespace NSUI.Controls
                     tcs.SetResult(null);
                 }
                 wasapiOut.PlaybackStopped += PlaybackStopped;
-                using (var waveProvider = new WaveFileReader(audioSource))
-                {
-                    wasapiOut.Init(waveProvider);
-                    wasapiOut.Play();
-                }
+                var waveProvider = new WaveFileReader(audioSource);
+                wasapiOut.Init(waveProvider);
+                wasapiOut.Play();
             }
             return tcs.Task;
         }

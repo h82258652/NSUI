@@ -37,13 +37,15 @@ namespace NSUI.Controls
                 return Task.CompletedTask;
             }
 
+            var image = GetTemplateChild("Image");
+
             var storyboard = new Storyboard();
             {
                 var animation = new DoubleAnimation()
                 {
                     From = 1,
-                    To = 1.1,
-                    Duration = TimeSpan.FromSeconds(0.4)
+                    To = 1.4,
+                    Duration = TimeSpan.FromSeconds(0.3)
                 };
                 Storyboard.SetTarget(animation, _ripple);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(ScaleTransform.ScaleX)"));
@@ -53,22 +55,88 @@ namespace NSUI.Controls
                 var animation = new DoubleAnimation()
                 {
                     From = 1,
-                    To = 1.1,
-                    Duration = TimeSpan.FromSeconds(0.4)
+                    To = 1.4,
+                    Duration = TimeSpan.FromSeconds(0.3)
                 };
                 Storyboard.SetTarget(animation, _ripple);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(ScaleTransform.ScaleY)"));
                 storyboard.Children.Add(animation);
             }
             {
-                var animation = new DoubleAnimation()
+                var animation = new DoubleAnimationUsingKeyFrames();
+                animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
                 {
-                    From = 1,
-                    To = 0,
-                    Duration = TimeSpan.FromSeconds(0.4)
-                };
+                    KeyTime = TimeSpan.FromSeconds(0),
+                    Value = 0.3
+                });
+                animation.KeyFrames.Add(new EasingDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0.4),
+                    Value = 0,
+                    EasingFunction = new CircleEase()
+                    {
+                        EasingMode = EasingMode.EaseIn
+                    }
+                });
+                //animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
+                //{
+                //    KeyTime = TimeSpan.FromSeconds(0.3),
+                //    Value = 0
+                //});
                 Storyboard.SetTarget(animation, _ripple);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+                storyboard.Children.Add(animation);
+            }
+
+            {
+                var animation = new DoubleAnimation();
+                animation.From = 0;
+                animation.To = 90;
+                animation.Duration = TimeSpan.FromSeconds(0.1);
+                Storyboard.SetTarget(animation, image);
+                Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)"));
+                storyboard.Children.Add(animation);
+            }
+            {
+                DoubleAnimationUsingKeyFrames animation = new DoubleAnimationUsingKeyFrames();
+                animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0),
+                    Value = 1
+                });
+                animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0.05),
+                    Value = 1.1
+                });
+                animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0.1),
+                    Value = 1
+                });
+                Storyboard.SetTarget(animation, image);
+                Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleX)"));
+                storyboard.Children.Add(animation);
+            }
+            {
+                DoubleAnimationUsingKeyFrames animation = new DoubleAnimationUsingKeyFrames();
+                animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0),
+                    Value = 1
+                });
+                animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0.05),
+                    Value = 1.1
+                });
+                animation.KeyFrames.Add(new LinearDoubleKeyFrame()
+                {
+                    KeyTime = TimeSpan.FromSeconds(0.1),
+                    Value = 1
+                });
+                Storyboard.SetTarget(animation, image);
+                Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[1].(ScaleTransform.ScaleY)"));
                 storyboard.Children.Add(animation);
             }
             return storyboard.BeginAsync();

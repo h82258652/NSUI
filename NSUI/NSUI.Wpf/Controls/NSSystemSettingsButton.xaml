@@ -2,12 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:NSUI.Controls">
     <Style TargetType="controls:NSSystemSettingsButton">
+        <Setter Property="Background"
+                Value="#505050" />
+        <Setter Property="BorderBrush"
+                Value="#161616" />
+        <Setter Property="ClickAudioSource"
+                Value="pack://application:,,,/NSUI.Wpf;component/Assets/Audios/settings.wav" />
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="FontSize"
-                Value="22" />
+                Value="25" />
         <Setter Property="Height"
-                Value="60" />
+                Value="92" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Label"
@@ -45,6 +51,11 @@
                                 <VisualState x:Name="Unfocused" />
                                 <VisualState x:Name="Focused">
                                     <Storyboard>
+                                        <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="ContentGrid"
+                                                                          Storyboard.TargetProperty="Margin">
+                                            <DiscreteThicknessKeyFrame KeyTime="0:0:0"
+                                                                       Value="-2" />
+                                        </ThicknessAnimationUsingKeyFrames>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PART_FocusVisual"
                                                                        Storyboard.TargetProperty="Visibility">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0">
@@ -58,17 +69,24 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid>
-                            <Grid>
+                            <Grid x:Name="ContentGrid"
+                                  Margin="3">
                                 <Ellipse Fill="{TemplateBinding Background}"
                                          SnapsToDevicePixels="True"
-                                         Stroke="{TemplateBinding BorderBrush}" />
-                                <Image Margin="{TemplateBinding Padding}" Source="pack://application:,,,/NSUI.Wpf;component/Assets/Images/settings.light.png" />
-                                <Ellipse x:Name="PART_Ripple"
-                                         RenderTransformOrigin="0.5,0.5">
-                                    <UIElement.RenderTransform>
-                                        <ScaleTransform />
-                                    </UIElement.RenderTransform>
-                                </Ellipse>
+                                         Stroke="{TemplateBinding BorderBrush}"
+                                         StrokeThickness="1" />
+                                <Image x:Name="Image"
+                                       Margin="{TemplateBinding Padding}"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       Source="pack://application:,,,/NSUI.Wpf;component/Assets/Images/settings.light.png"
+                                       Stretch="None">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <RotateTransform />
+                                            <ScaleTransform />
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
                                 <Ellipse x:Name="PressedIndicator"
                                          Fill="{DynamicResource NSAccentBrush}"
                                          IsHitTestVisible="False"
@@ -90,10 +108,19 @@
                                                IsHitTestVisible="False"
                                                Text="{TemplateBinding Label}">
                                         <UIElement.RenderTransform>
-                                            <TranslateTransform Y="20" />
+                                            <TranslateTransform Y="26" />
                                         </UIElement.RenderTransform></TextBlock>
                                 </Grid>
                             </Grid>
+                            <Ellipse x:Name="PART_Ripple"
+                                     Fill="#505050"
+                                     Opacity="0"
+                                     IsHitTestVisible="False"
+                                     RenderTransformOrigin="0.5,0.5">
+                                <UIElement.RenderTransform>
+                                    <ScaleTransform />
+                                </UIElement.RenderTransform>
+                            </Ellipse>
                         </Grid>
                         <controls:NSCircleFocusVisual x:Name="PART_FocusVisual"
                                                       Visibility="Collapsed" />
@@ -104,6 +131,6 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Width"
-                Value="60" />
+                Value="92" />
     </Style>
 </ResourceDictionary>

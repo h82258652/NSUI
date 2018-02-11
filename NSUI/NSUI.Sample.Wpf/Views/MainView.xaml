@@ -14,10 +14,10 @@
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <controls:NSClock></controls:NSClock>
+            <controls:NSSystemSettingsButton></controls:NSSystemSettingsButton>
         </StackPanel>
         <Button HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Center"
                 Click="ButtonBase_OnClick"
                 Content="Theme" />
     </Grid>

@@ -5,12 +5,12 @@
         <Setter Property="Focusable"
                 Value="False" />
         <Setter Property="Margin"
-                Value="-1" />
+                Value="-6" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSCircleFocusVisual">
                     <Ellipse x:Name="PART_VisualElement"
-                             StrokeThickness="1">
+                             StrokeThickness="5">
                         <FrameworkElement.Resources>
                             <ResourceDictionary>
                                 <Storyboard x:Key="VisualBrushStoryboard">

@@ -13,7 +13,7 @@
         <Setter Property="FontFamily"
                 Value="pack://application:,,,/NSUI.Wpf;component/Assets/Fonts/Nintendo Switch Font.ttf" />
         <Setter Property="FontSize"
-                Value="16" />
+                Value="22" />
         <Setter Property="Foreground"
                 Value="{DynamicResource NSForegroundBrush}" />
         <Setter Property="HorizontalContentAlignment"
@@ -33,7 +33,8 @@
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
                                                                        Storyboard.TargetProperty="Opacity">
-                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0" Value="0.5" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0"
+                                                                    Value="0.5" />
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -66,16 +67,18 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid>
-                                    <Ellipse Width="20"
-                                             Height="20"
+                                    <Ellipse Width="25"
+                                             Height="25"
                                              Fill="{TemplateBinding Foreground}" />
                                     <TextBlock HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
+                                               FontSize="18"
+                                               FontWeight="SemiBold"
                                                Foreground="{DynamicResource NSBackgroundBrush}"
                                                Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(AutomationProperties.AccessKey)}" />
                                 </Grid>
                                 <ContentPresenter Grid.Column="1"
-                                                  Margin="6,0,0,0"
+                                                  Margin="10,0,0,0"
                                                   VerticalAlignment="Center"
                                                   Focusable="False"
                                                   RecognizesAccessKey="True"
