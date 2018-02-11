@@ -2,12 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:NSUI.Controls">
     <Style TargetType="controls:NSSystemSettingsButton">
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="FontSize"
+                Value="22" />
         <Setter Property="Height"
                 Value="60" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="Label"
                 Value="System Settings" />
+        <Setter Property="StrokeThickness"
+                Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSSystemSettingsButton">
@@ -16,7 +22,15 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedIndicator"
+                                                                       Storyboard.TargetProperty="Opacity">
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0"
+                                                                    Value="0.2" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
@@ -48,7 +62,7 @@
                                 <Ellipse Fill="{TemplateBinding Background}"
                                          SnapsToDevicePixels="True"
                                          Stroke="{TemplateBinding BorderBrush}" />
-                                <Image Source="/Assets/Images/settings.light.png" />
+                                <Image Margin="{TemplateBinding Padding}" Source="pack://application:,,,/NSUI.Wpf;component/Assets/Images/settings.light.png" />
                                 <Ellipse x:Name="PART_Ripple"
                                          RenderTransformOrigin="0.5,0.5">
                                     <UIElement.RenderTransform>
