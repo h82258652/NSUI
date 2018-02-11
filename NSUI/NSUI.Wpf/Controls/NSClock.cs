@@ -7,20 +7,23 @@ using System.Windows.Threading;
 
 namespace NSUI.Controls
 {
-    [TemplatePart(Name = TimeTextBlockTemplateName, Type = typeof(TextBlock))]
-    [TemplatePart(Name = MiddayTextBlockTemplateName, Type = typeof(TextBlock))]
+    [TemplatePart(Name = HourItemsControlTemplateName, Type = typeof(ItemsControl))]
+    [TemplatePart(Name = MinuteItemsControlTemplateName, Type = typeof(ItemsControl))]
+    [TemplatePart(Name = AMPMItemsControlTemplateName, Type = typeof(ItemsControl))]
     public class NSClock : Control
     {
-        private const string MiddayTextBlockTemplateName = "PART_MiddayTextBlock";
-        private const string TimeTextBlockTemplateName = "PART_TimeTextBlock";
+        private const string AMPMItemsControlTemplateName = "PART_AMPMItemsControl";
+        private const string HourItemsControlTemplateName = "PART_HourItemsControl";
+        private const string MinuteItemsControlTemplateName = "PART_MinuteItemsControl";
 
         private readonly DispatcherTimer _timer = new DispatcherTimer()
         {
             Interval = TimeSpan.FromTicks(Stopwatch.Frequency)
         };
 
-        private TextBlock _middayTextBlock;
-        private TextBlock _timeTextBlock;
+        private ItemsControl _ampmItemsControl;
+        private ItemsControl _hourItemsControl;
+        private ItemsControl _minuteItemsControl;
 
         static NSClock()
         {
@@ -38,8 +41,9 @@ namespace NSUI.Controls
         {
             base.OnApplyTemplate();
 
-            _timeTextBlock = (TextBlock)GetTemplateChild(TimeTextBlockTemplateName);
-            _middayTextBlock = (TextBlock)GetTemplateChild(MiddayTextBlockTemplateName);
+            _hourItemsControl = (ItemsControl)GetTemplateChild(HourItemsControlTemplateName);
+            _minuteItemsControl = (ItemsControl)GetTemplateChild(MinuteItemsControlTemplateName);
+            _ampmItemsControl = (ItemsControl)GetTemplateChild(AMPMItemsControlTemplateName);
 
             UpdateVisual();
         }
@@ -62,8 +66,10 @@ namespace NSUI.Controls
         private void UpdateVisual()
         {
             var now = DateTime.Now;
-            _timeTextBlock.Text = now.ToString("h:m", CultureInfo.InvariantCulture);
-            _middayTextBlock.Text = now.ToString("tt", CultureInfo.InvariantCulture);
+            var hour = now.Hour;
+            _hourItemsControl.ItemsSource = hour > 12 ? (hour - 12).ToString() : hour.ToString();
+            _minuteItemsControl.ItemsSource = now.Minute.ToString("00");
+            _ampmItemsControl.ItemsSource = now.ToString("tt", CultureInfo.InvariantCulture);
         }
     }
 }

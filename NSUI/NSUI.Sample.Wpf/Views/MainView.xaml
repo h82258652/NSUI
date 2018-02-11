@@ -14,7 +14,7 @@
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <controls:NSSystemSettingsButton />
+            <controls:NSClock></controls:NSClock>
         </StackPanel>
         <Button HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
