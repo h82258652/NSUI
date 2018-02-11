@@ -1,27 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+using GalaSoft.MvvmLight.Views;
 using NSUI.Controls;
 using NSUI.Sample.Extensions;
 
 namespace NSUI.Sample.Services
 {
-    public class AppNavigationService
+    public class AppNavigationService : INavigationService
     {
+        public const string UnknownPageKey = "-- UNKNOWN --";
 
-        public void XX()
+        private readonly Dictionary<string, Type> _pagesByKey = new Dictionary<string, Type>();
+
+        public string CurrentPageKey
         {
-            var frame = Application.Current.MainWindow?.GetFirstDescendantOfType<NSFrame>();
-            if (frame != null)
+            get
             {
-                frame.Navigate("");
+                lock (_pagesByKey)
+                {
+                    var frame = Application.Current.MainWindow.GetFirstDescendantOfType<NSFrame>();
+                    var currentType = frame.Content.GetType();
+
+                    if (_pagesByKey.All(temp => temp.Value != currentType))
+                    {
+                        return UnknownPageKey;
+                    }
+
+                    var item = _pagesByKey.FirstOrDefault(temp => temp.Value == currentType);
+
+                    return item.Key;
+                };
             }
         }
 
+        public void Config(string key, Type pageType)
+        {
+            lock (_pagesByKey)
+            {
+                if (_pagesByKey.ContainsKey(key))
+                {
+                    throw new ArgumentException("This key is already used: " + key);
+                }
+                if (_pagesByKey.Any(p => p.Value == pageType))
+                {
+                    throw new ArgumentException("This type is already configured with key " + _pagesByKey.First(p => p.Value == pageType).Key);
+                }
 
+                _pagesByKey.Add(key, pageType);
+            }
+        }
+
+        public void GoBack()
+        {
+            var frame = Application.Current.MainWindow.GetFirstDescendantOfType<NSFrame>();
+            if (frame.CanGoBack)
+            {
+                frame.GoBack();
+            }
+        }
+
+        public void NavigateTo(string pageKey)
+        {
+            NavigateTo(pageKey, null);
+        }
+
+        public void NavigateTo(string pageKey, object parameter)
+        {
+            lock (_pagesByKey)
+            {
+                if (!_pagesByKey.ContainsKey(pageKey))
+                {
+                    throw new ArgumentException(string.Format("No such page: {0}. Did you forget to call NavigationService.Configure?", pageKey), nameof(pageKey));
+                }
+
+                var frame = Application.Current.MainWindow.GetFirstDescendantOfType<NSFrame>();
+
+                frame.NavigateWithTransition(Activator.CreateInstance(_pagesByKey[pageKey]), parameter);
+            }
+        }
     }
 }

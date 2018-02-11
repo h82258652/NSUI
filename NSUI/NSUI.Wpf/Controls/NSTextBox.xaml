@@ -5,7 +5,7 @@
         <Setter Property="AllowDrop"
                 Value="True" />
         <Setter Property="Background"
-                Value="Transparent" />
+                Value="{DynamicResource NSBackgroundBrush}" />
         <Setter Property="BorderBrush"
                 Value="{DynamicResource NSForegroundBrush}" />
         <Setter Property="BorderThickness"
@@ -61,7 +61,7 @@
                             <ScrollViewer x:Name="PART_ContentHost"
                                           Focusable="False"
                                           HorizontalScrollBarVisibility="Hidden"
-                                          VerticalScrollBarVisibility="Hidden" />
+                                              VerticalScrollBarVisibility="Hidden" />
                         </Border>
                         <TextBlock x:Name="PART_LimitTextBlock"
                                    Grid.Row="1"
@@ -72,5 +72,17 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <!--<Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsInactiveSelectionHighlightEnabled"
+                               Value="True" />
+                    <Condition Property="IsSelectionActive"
+                               Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="SelectionBrush"
+                        Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}" />
+            </MultiTrigger>
+        </Style.Triggers>-->
     </Style>
 </ResourceDictionary>

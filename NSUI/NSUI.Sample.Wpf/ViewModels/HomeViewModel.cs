@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Input;
+using GalaSoft.MvvmLight.CommandWpf;
 using NSUI.Sample.Models;
 using NSUI.Sample.Services;
 
@@ -7,6 +8,8 @@ namespace NSUI.Sample.ViewModels
 {
     public class HomeViewModel
     {
+        private readonly AppNavigationService _appNavigationService;
+
         public HomeViewModel()
         {
             _userService = new UserService();
@@ -26,7 +29,7 @@ namespace NSUI.Sample.ViewModels
 
 
 
-        private UserService _userService;
+        private readonly UserService _userService;
 
         public User User { get; }
 
@@ -34,6 +37,19 @@ namespace NSUI.Sample.ViewModels
 
         public IOperable Selected { get; set; }
 
-        public ICommand UserProfileCommand { get; }
+        private ICommand _userProfileCommand;
+
+        public ICommand UserProfileCommand
+        {
+            get
+            {
+                _userProfileCommand = _userProfileCommand ?? new RelayCommand(() =>
+                {
+                    _appNavigationService.NavigateTo(ViewModelLocator.UserProfileViewKey);
+                });
+                return _userProfileCommand;
+
+            }
+        }
     }
 }

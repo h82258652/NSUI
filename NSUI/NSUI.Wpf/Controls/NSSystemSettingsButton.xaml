@@ -6,16 +6,26 @@
                 Value="60" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="Label"
+                Value="System Settings" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSSystemSettingsButton">
-                    <Grid>
+                    <Grid x:Name="RootGrid">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver" />
                                 <VisualState x:Name="Pressed" />
-                                <VisualState x:Name="Disabled" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
+                                                                       Storyboard.TargetProperty="Opacity">
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0"
+                                                                    Value="0.5" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                             </VisualStateGroup>
                             <VisualStateGroup x:Name="FocusStates">
                                 <VisualState x:Name="Unfocused" />
@@ -33,13 +43,44 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Ellipse x:Name="PART_Ripple"
-                                 RenderTransformOrigin="0.5,0.5">
-                            <UIElement.RenderTransform>
-                                <ScaleTransform />
-                            </UIElement.RenderTransform>
-                        </Ellipse>
-                        <Image />
+                        <Grid>
+                            <Grid>
+                                <Ellipse Fill="{TemplateBinding Background}"
+                                         SnapsToDevicePixels="True"
+                                         Stroke="{TemplateBinding BorderBrush}" />
+                                <Image Source="/Assets/Images/settings.light.png" />
+                                <Ellipse x:Name="PART_Ripple"
+                                         RenderTransformOrigin="0.5,0.5">
+                                    <UIElement.RenderTransform>
+                                        <ScaleTransform />
+                                    </UIElement.RenderTransform>
+                                </Ellipse>
+                                <Ellipse x:Name="PressedIndicator"
+                                         Fill="{DynamicResource NSAccentBrush}"
+                                         IsHitTestVisible="False"
+                                         Opacity="0" />
+                            </Grid>
+                            <Grid VerticalAlignment="Bottom"
+                                  RenderTransformOrigin="0.5,1">
+                                <UIElement.RenderTransform>
+                                    <ScaleTransform ScaleY="-1" />
+                                </UIElement.RenderTransform>
+                                <Grid RenderTransformOrigin="0.5,0.5">
+                                    <UIElement.RenderTransform>
+                                        <ScaleTransform ScaleY="-1" />
+                                    </UIElement.RenderTransform>
+                                    <TextBlock Margin="-65535"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Foreground="{DynamicResource NSAccentBrush}"
+                                               IsHitTestVisible="False"
+                                               Text="{TemplateBinding Label}">
+                                        <UIElement.RenderTransform>
+                                            <TranslateTransform Y="20" />
+                                        </UIElement.RenderTransform></TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                         <controls:NSCircleFocusVisual x:Name="PART_FocusVisual"
                                                       Visibility="Collapsed" />
                     </Grid>

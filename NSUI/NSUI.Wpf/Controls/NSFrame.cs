@@ -1,36 +1,103 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
+using NSUI.Extensions;
 
 namespace NSUI.Controls
 {
+    [TemplatePart(Name = FrameContentPresenterTemplateName, Type = typeof(ContentPresenter))]
     public class NSFrame : Frame
     {
+        private const string FrameContentPresenterTemplateName = "PART_FrameCP";
+
+        private ContentPresenter _frameContentPresenter;
+
         static NSFrame()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NSFrame), new FrameworkPropertyMetadata(typeof(NSFrame)));
         }
 
-        public void NavigateWithTransition(Uri source, object extraData)
+        public async Task<bool> NavigateWithTransition(Uri source, object extraData)
         {
+            await FadeOut();
+
             // TODO
-            base.Navigate(source, extraData);
+            var result = base.Navigate(source, extraData);
+
+            await FadeIn();
+
+            return result;
         }
 
-        public void NavigateWithTransition(Uri source)
+        public Task<bool> NavigateWithTransition(Uri source)
         {
-            NavigateWithTransition(source, null);
+            return NavigateWithTransition(source, null);
         }
 
-        public void NavigateWithTransition(object content)
+        public Task<bool> NavigateWithTransition(object content)
         {
-            NavigateWithTransition(content, null);
+            return NavigateWithTransition(content, null);
         }
 
-        public void NavigateWithTransition(object content, object extraData)
+        public async Task<bool> NavigateWithTransition(object content, object extraData)
         {
+            await FadeOut();
+
             // TODO
-            base.Navigate(content, extraData);
+            var result = base.Navigate(content, extraData);
+
+            await FadeIn();
+
+            return result;
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _frameContentPresenter = (ContentPresenter)GetTemplateChild(FrameContentPresenterTemplateName);
+        }
+
+        private Task FadeIn()
+        {
+            if (_frameContentPresenter == null)
+            {
+                return Task.CompletedTask;
+            }
+
+            var storyboard = new Storyboard();
+            var animation = new DoubleAnimation()
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(0.3)
+            };
+            Storyboard.SetTarget(animation, _frameContentPresenter);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+            storyboard.Children.Add(animation);
+            return storyboard.BeginAsync();
+        }
+
+        private Task FadeOut()
+        {
+            if (_frameContentPresenter == null)
+            {
+                return Task.CompletedTask;
+            }
+
+            var storyboard = new Storyboard();
+            var animation = new DoubleAnimation()
+            {
+                From = 1,
+                To = 0,
+                Duration = TimeSpan.FromSeconds(0.3)
+            };
+            Storyboard.SetTarget(animation, _frameContentPresenter);
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
+            storyboard.Children.Add(animation);
+            return storyboard.BeginAsync();
         }
     }
 }

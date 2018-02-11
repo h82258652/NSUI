@@ -9,7 +9,7 @@
       d:DesignWidth="1280"
       DataContext="{Binding Source={StaticResource Locator}, Path=Home}"
       mc:Ignorable="d">
-    <Grid Background="#2D2D2D">
+    <Grid Background="{DynamicResource NSBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -21,15 +21,14 @@
             <controls:NSCircleButton Command="{Binding Path=UserProfileCommand}">
                 <Ellipse>
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding Path=User.Username}" />
+                        <ImageBrush ImageSource="{Binding Path=User.Avatar}" />
                     </Ellipse.Fill>
                 </Ellipse>
             </controls:NSCircleButton>
         </Grid>
         <Grid Grid.Row="1">
             <!--  Games  -->
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                          VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
                 <ItemsControl>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -46,10 +45,10 @@
         </Grid>
         <Grid Grid.Row="2">
             <!--  Apps & Settings  -->
-            <StackPanel HorizontalAlignment="Center"
-                        Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <controls:NSNewsButton />
                 <controls:NSAlbumButton />
+                <controls:NSControllersButton />
                 <controls:NSSystemSettingsButton />
             </StackPanel>
         </Grid>
@@ -60,17 +59,13 @@
                     BorderBrush="#CACACA"
                     BorderThickness="0,1,0,0">
                 <Grid>
-                    <Grid HorizontalAlignment="Left"
-                          Background="White">
-                        <Image Source="/Assets/Images/switch.light.png"
-                               Stretch="None" />
+                    <Grid HorizontalAlignment="Left" Background="White">
+                        <Image Source="/Assets/Images/switch.light.png" Stretch="None" />
                     </Grid>
-                    <StackPanel HorizontalAlignment="Right"
-                                Background="#2D2D2D"
-                                Orientation="Horizontal">
-                        <controls:NSActionBarButton AutomationProperties.AccessKey="B"
-                                                    Content="Cancel" />
-                        <controls:NSActionBarButton AutomationProperties.AccessKey="A"
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <controls:NSActionBarButton AutomationProperties.AccessKey="B" Content="Cancel" />
+                        <controls:NSActionBarButton Margin="20,0,0,0"
+                                                    AutomationProperties.AccessKey="A"
                                                     Content="OK" />
                     </StackPanel>
                 </Grid>

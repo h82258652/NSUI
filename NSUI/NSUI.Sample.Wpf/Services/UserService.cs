@@ -8,7 +8,8 @@ namespace NSUI.Sample.Services
         {
             return new User()
             {
-                Username = "mario"
+                Username = "mario",
+                Avatar = "/Assets/Images/avatar.gif"
             };
         }
     }

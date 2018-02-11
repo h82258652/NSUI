@@ -74,10 +74,11 @@
                                                HorizontalAlignment="Center"
                                                VerticalAlignment="Center"
                                                Foreground="{DynamicResource NSAccentBrush}"
+                                               IsHitTestVisible="False"
                                                Text="{TemplateBinding Label}">
-                                        <TextBlock.RenderTransform>
+                                        <UIElement.RenderTransform>
                                             <TranslateTransform Y="20" />
-                                        </TextBlock.RenderTransform></TextBlock>
+                                        </UIElement.RenderTransform></TextBlock>
                                 </Grid>
                             </Grid>
                         </Grid>

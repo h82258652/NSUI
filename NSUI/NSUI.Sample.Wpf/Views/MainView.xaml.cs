@@ -24,8 +24,7 @@ namespace NSUI.Sample.Views
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            var rBackground = Button2.Background;
+        { 
 
             var nsThemeManager = NSThemeManager.Instance;
             if (nsThemeManager.CurrentTheme == NSTheme.Light)
