@@ -8,5 +8,5 @@
     <SolidColorBrush x:Key="NSBackgroundBrush"
                      Color="#2D2D2D" />
     <SolidColorBrush x:Key="NSForegroundBrush"
-                     Color="#FEFEFE" />
+                     Color="#FFFFFF" />
 </ResourceDictionary>
