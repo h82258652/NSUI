@@ -6,6 +6,8 @@ namespace NSUI.Controls
     {
         Uri ShakeAudioSource { get; set; }
 
+        double StrokeThickness { get; set; }
+
         void ShakeDown();
 
         void ShakeLeft();

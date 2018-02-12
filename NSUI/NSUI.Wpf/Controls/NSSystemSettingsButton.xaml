@@ -134,6 +134,8 @@
                             </Ellipse>
                         </Grid>
                         <controls:NSCircleFocusVisual x:Name="PART_FocusVisual"
+                                                      Margin="-6"
+                                                      StrokeThickness="5"
                                                       Visibility="Collapsed" />
                     </Grid>
                 </ControlTemplate>

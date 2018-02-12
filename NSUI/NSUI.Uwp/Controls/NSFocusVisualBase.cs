@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
-using NAudio.CoreAudioApi;
-using NAudio.Win8.Wave.WaveOutputs;
-using Windows.Storage;
+using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -12,9 +9,24 @@ namespace NSUI.Controls
     [TemplatePart(Name = VisualElementTemplateName, Type = typeof(FrameworkElement))]
     public abstract class NSFocusVisualBase : Control, INSFocusVisual
     {
+        public static readonly DependencyProperty ShakeAudioSourceProperty = DependencyProperty.Register(nameof(ShakeAudioSource), typeof(Uri), typeof(NSFocusVisualBase), new PropertyMetadata(default(Uri)));
+        public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(NSFocusVisualBase), new PropertyMetadata(default(double)));
+
         private const string VisualElementTemplateName = "PART_VisualElement";
 
         private FrameworkElement _visualElement;
+
+        public Uri ShakeAudioSource
+        {
+            get => (Uri)GetValue(ShakeAudioSourceProperty);
+            set => SetValue(ShakeAudioSourceProperty, value);
+        }
+
+        public double StrokeThickness
+        {
+            get => (double)GetValue(StrokeThicknessProperty);
+            set => SetValue(StrokeThicknessProperty, value);
+        }
 
         public void ShakeDown()
         {
@@ -41,24 +53,19 @@ namespace NSUI.Controls
             base.OnApplyTemplate();
 
             _visualElement = (FrameworkElement)GetTemplateChild(VisualElementTemplateName);
-            if (_visualElement != null)
-            {
-                ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
-            }
+            Debug.Assert(_visualElement != null);
+            ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
         }
 
-        private static async void PlayShakeAudio()
+        private void PlayShakeAudio()
         {
-            using (var wasapiOut = new WasapiOutRT(AudioClientShareMode.Shared, 200))
+            var shakeAudioSource = ShakeAudioSource;
+            if (shakeAudioSource == null)
             {
-                var audio = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///NSUI.Uwp/Assets/Audios/standby.wav"));
-                var audioSource = await audio.OpenStreamForReadAsync();
-                using (var waveProvider = new MediaFoundationReaderUniversal(audioSource.AsRandomAccessStream()))
-                {
-                    wasapiOut.Init(() => waveProvider);
-                    wasapiOut.Play();
-                }
+                return;
             }
+
+            NSAudioManager.PlayAudio(shakeAudioSource);
         }
 
         private void Shake(double value1, double value2, string propertyPath)

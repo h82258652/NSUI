@@ -154,6 +154,7 @@
     <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSActionBarButton.cs" />
     <Compile Include="Controls\NSAlbumButton.cs" />
+    <Compile Include="Controls\NSAppButton.cs" />
     <Compile Include="Controls\NSBattery.cs" />
     <Compile Include="Controls\NSButton.cs" />
     <Compile Include="Controls\NSButtonBase.cs" />
@@ -239,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\settings.dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\eshop.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

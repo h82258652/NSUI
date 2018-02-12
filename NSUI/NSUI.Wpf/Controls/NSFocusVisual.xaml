@@ -8,13 +8,15 @@
                 Value="-1" />
         <Setter Property="ShakeAudioSource"
                 Value="pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav" />
+        <Setter Property="StrokeThickness"
+                Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSFocusVisual">
                     <Rectangle x:Name="PART_VisualElement"
                                SnapsToDevicePixels="True"
                                StrokeLineJoin="Round"
-                               StrokeThickness="2">
+                               StrokeThickness="{TemplateBinding StrokeThickness}">
                         <FrameworkElement.Resources>
                             <ResourceDictionary>
                                 <Storyboard x:Key="VisualBrushStoryboard">

@@ -5,11 +5,34 @@ NSTheme
 NSAccentBrush
 NSBackgroundBrush
 NSForegroundBrush
+NSClock
 
 need test:
 NSAudioManager
 
+todo:
+NSTextBox
 
+NSFrame
+
+NSButton
+
+NSActionBarButton
+
+NSCircleButton
+NSUserButton
+
+NSAppButton
+
+NSNewsButton
+NSeShopButton
+NSAlbumButton
+NSControllersButton
+NSSettingsButton
+NSPowerButton
+
+NSScrollViewerStyle
+NSScrollBarStyle
 
 UWP
 

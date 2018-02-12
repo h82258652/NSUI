@@ -11,4 +11,8 @@
                      Color="#2D2D2D" />
     <SolidColorBrush x:Key="NSDisabledBrush"
                      Color="#A0A0A0" />
+    <SolidColorBrush x:Key="NSAppButtonBorderBrush"
+                     Color="#979797" />
+    <SolidColorBrush x:Key="NSAppButtonBackgroundBrush"
+                     Color="#FFFFFF" />
 </ResourceDictionary>

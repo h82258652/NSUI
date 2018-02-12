@@ -10,6 +10,7 @@ namespace NSUI.Controls
     public abstract class NSFocusVisualBase : Control, INSFocusVisual
     {
         public static readonly DependencyProperty ShakeAudioSourceProperty = DependencyProperty.Register(nameof(ShakeAudioSource), typeof(Uri), typeof(NSFocusVisualBase), new PropertyMetadata(default(Uri)));
+        public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(NSFocusVisualBase), new PropertyMetadata(default(double)));
 
         private const string VisualElementTemplateName = "PART_VisualElement";
 
@@ -19,6 +20,12 @@ namespace NSUI.Controls
         {
             get => (Uri)GetValue(ShakeAudioSourceProperty);
             set => SetValue(ShakeAudioSourceProperty, value);
+        }
+
+        public double StrokeThickness
+        {
+            get => (double)GetValue(StrokeThicknessProperty);
+            set => SetValue(StrokeThicknessProperty, value);
         }
 
         public override void OnApplyTemplate()

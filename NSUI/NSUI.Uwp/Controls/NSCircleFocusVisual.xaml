@@ -4,11 +4,15 @@
     <Style TargetType="controls:NSCircleFocusVisual">
         <Setter Property="Margin"
                 Value="-1" />
+        <Setter Property="ShakeAudioSource"
+                Value="ms-appx:///NSUI.Uwp/Assets/Audios/standby.wav" />
+        <Setter Property="StrokeThickness"
+                Value="2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSCircleFocusVisual">
                     <Ellipse x:Name="PART_VisualElement"
-                             StrokeThickness="1">
+                             StrokeThickness="{TemplateBinding StrokeThickness}">
                         <FrameworkElement.Resources>
                             <ResourceDictionary>
                                 <Storyboard x:Key="VisualBrushStoryboard">
@@ -23,8 +27,7 @@
                             </ResourceDictionary>
                         </FrameworkElement.Resources>
                         <Shape.Stroke>
-                            <SolidColorBrush x:Name="VisualBrush"
-                                             Color="#00FFCC" />
+                            <SolidColorBrush x:Name="VisualBrush" />
                         </Shape.Stroke>
                         <UIElement.RenderTransform>
                             <TranslateTransform />
