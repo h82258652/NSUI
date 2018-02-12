@@ -14,12 +14,9 @@
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <controls:NSSystemSettingsButton ClickEffectEnded="NSButtonBase_OnClickEffectEnded"></controls:NSSystemSettingsButton>
-            
-            <controls:NSTextBox Header="Hello" PlaceholderText="Doge" AcceptsReturn="True" MaxLength="30"></controls:NSTextBox>
-            <controls:NSTextBox MaxLength="30"
-                                PlaceholderText="Doge"
-                                AcceptsReturn="True"></controls:NSTextBox>
+            <controls:NSSystemSettingsButton ClickEffectEnded="NSButtonBase_OnClickEffectEnded" />
+            <controls:NSActionBarButton AutomationProperties.AccessKey="A"
+                                        Content="OK" />
         </StackPanel>
         <Button HorizontalAlignment="Right"
                 VerticalAlignment="Center"

@@ -2,6 +2,9 @@ WPF
 
 done:
 NSTheme
+NSAccentBrush
+NSBackgroundBrush
+NSForegroundBrush
 
 need test:
 NSAudioManager

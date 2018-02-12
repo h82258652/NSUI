@@ -12,6 +12,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSFocusVisual">
                     <Rectangle x:Name="PART_VisualElement"
+                               SnapsToDevicePixels="True"
                                StrokeLineJoin="Round"
                                StrokeThickness="2">
                         <FrameworkElement.Resources>
@@ -28,8 +29,7 @@
                             </ResourceDictionary>
                         </FrameworkElement.Resources>
                         <Shape.Stroke>
-                            <SolidColorBrush x:Name="VisualBrush"
-                                             Color="#00FFCC" />
+                            <SolidColorBrush x:Name="VisualBrush" />
                         </Shape.Stroke>
                         <UIElement.RenderTransform>
                             <TranslateTransform />

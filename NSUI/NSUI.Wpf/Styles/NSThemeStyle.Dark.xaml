@@ -9,4 +9,6 @@
                      Color="#2D2D2D" />
     <SolidColorBrush x:Key="NSForegroundBrush"
                      Color="#FFFFFF" />
+    <SolidColorBrush x:Key="NSDisabledBrush"
+                     Color="Red" />
 </ResourceDictionary>

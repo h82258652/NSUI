@@ -7,11 +7,12 @@
         <Setter Property="Margin"
                 Value="-6" />
         <Setter Property="ShakeAudioSource"
-                Value="pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav"/>
+                Value="pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSCircleFocusVisual">
                     <Ellipse x:Name="PART_VisualElement"
+                             SnapsToDevicePixels="True"
                              StrokeThickness="5">
                         <FrameworkElement.Resources>
                             <ResourceDictionary>
@@ -27,8 +28,7 @@
                             </ResourceDictionary>
                         </FrameworkElement.Resources>
                         <Shape.Stroke>
-                            <SolidColorBrush x:Name="VisualBrush"
-                                             Color="#00FFCC" />
+                            <SolidColorBrush x:Name="VisualBrush" />
                         </Shape.Stroke>
                         <UIElement.RenderTransform>
                             <TranslateTransform />
