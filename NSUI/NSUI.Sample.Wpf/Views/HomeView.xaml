@@ -29,7 +29,7 @@
         <Grid Grid.Row="1">
             <!--  Games  -->
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
-                <ItemsControl>
+                <ItemsControl Focusable="False">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <Border />
@@ -46,9 +46,11 @@
         <Grid Grid.Row="2">
             <!--  Apps & Settings  -->
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <controls:NSNewsButton />
-                <controls:NSAlbumButton />
-                <controls:NSControllersButton />
+                <controls:NSSystemSettingsButton />
+                <controls:NSSystemSettingsButton />
+                <controls:NSSystemSettingsButton />
+                <controls:NSSystemSettingsButton />
+                <controls:NSSystemSettingsButton />
                 <controls:NSSystemSettingsButton />
             </StackPanel>
         </Grid>

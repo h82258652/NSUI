@@ -88,27 +88,9 @@ namespace NSUI.Controls
             }
         }
 
-        protected Task PlayAudioAsync(Stream audioSource)
+        protected Task PlayAudioAsync(Stream audioStream)
         {
-            if (audioSource == null)
-            {
-                throw new ArgumentNullException(nameof(audioSource));
-            }
-
-            var tcs = new TaskCompletionSource<object>();
-            using (var wasapiOut = new WasapiOut())
-            {
-                void PlaybackStopped(object sender, StoppedEventArgs e)
-                {
-                    wasapiOut.PlaybackStopped -= PlaybackStopped;
-                    tcs.SetResult(null);
-                }
-                wasapiOut.PlaybackStopped += PlaybackStopped;
-                var waveProvider = new WaveFileReader(audioSource);
-                wasapiOut.Init(waveProvider);
-                wasapiOut.Play();
-            }
-            return tcs.Task;
+            return NSAudioManager.PlayAudioAsync(audioStream);
         }
 
         protected Task PlayClickAudioAsync()
@@ -119,13 +101,7 @@ namespace NSUI.Controls
                 return Task.CompletedTask;
             }
 
-            var audio = Application.GetResourceStream(audioSource);
-            if (audio == null)
-            {
-                return Task.CompletedTask;
-            }
-
-            return PlayAudioAsync(audio.Stream);
+            return NSAudioManager.PlayAudioAsync(audioSource);
         }
 
         protected virtual Task PlayClickEffectAsync()

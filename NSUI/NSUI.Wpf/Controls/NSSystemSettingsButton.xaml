@@ -64,6 +64,14 @@
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LabelGrid"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -76,10 +84,11 @@
                                          Stroke="{TemplateBinding BorderBrush}"
                                          StrokeThickness="1" />
                                 <Image x:Name="Image"
+                                       Width="42"
+                                       Height="42"
                                        Margin="{TemplateBinding Padding}"
                                        RenderTransformOrigin="0.5,0.5"
-                                       Source="pack://application:,,,/NSUI.Wpf;component/Assets/Images/settings.light.png"
-                                       Stretch="None">
+                                       Source="pack://application:,,,/NSUI.Wpf;component/Assets/Images/settings.dark.png">
                                     <Image.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform />
@@ -92,8 +101,10 @@
                                          IsHitTestVisible="False"
                                          Opacity="0" />
                             </Grid>
-                            <Grid VerticalAlignment="Bottom"
-                                  RenderTransformOrigin="0.5,1">
+                            <Grid x:Name="LabelGrid"
+                                  VerticalAlignment="Bottom"
+                                  RenderTransformOrigin="0.5,1"
+                                  Visibility="Collapsed">
                                 <UIElement.RenderTransform>
                                     <ScaleTransform ScaleY="-1" />
                                 </UIElement.RenderTransform>
@@ -114,8 +125,8 @@
                             </Grid>
                             <Ellipse x:Name="PART_Ripple"
                                      Fill="#505050"
-                                     Opacity="0"
                                      IsHitTestVisible="False"
+                                     Opacity="0"
                                      RenderTransformOrigin="0.5,0.5">
                                 <UIElement.RenderTransform>
                                     <ScaleTransform />

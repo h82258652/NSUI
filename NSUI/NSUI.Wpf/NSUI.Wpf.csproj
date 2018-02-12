@@ -170,6 +170,7 @@
     <Compile Include="Controls\NSTextBox.cs" />
     <Compile Include="Extensions\StoryboardExtensions.cs" />
     <Compile Include="INSThemeManager.cs" />
+    <Compile Include="NSAudioManager.cs" />
     <Compile Include="NSTheme.cs" />
     <Compile Include="NSThemeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -235,6 +236,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\settings.light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\settings.dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

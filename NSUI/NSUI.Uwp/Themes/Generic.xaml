@@ -2,6 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSButton.xaml" />
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSCircleButton.xaml" />
+        <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSClock.xaml" />
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSCircleFocusVisual.xaml" />
         <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Controls/NSFocusVisual.xaml" />
     </ResourceDictionary.MergedDictionaries>

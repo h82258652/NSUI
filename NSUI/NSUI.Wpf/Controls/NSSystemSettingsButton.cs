@@ -73,32 +73,29 @@ namespace NSUI.Controls
                 {
                     KeyTime = TimeSpan.FromSeconds(0.4),
                     Value = 0,
-                    EasingFunction = new CircleEase()
+                    EasingFunction = new CubicEase()
                     {
                         EasingMode = EasingMode.EaseIn
                     }
                 });
-                //animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
-                //{
-                //    KeyTime = TimeSpan.FromSeconds(0.3),
-                //    Value = 0
-                //});
                 Storyboard.SetTarget(animation, _ripple);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
                 storyboard.Children.Add(animation);
             }
 
             {
-                var animation = new DoubleAnimation();
-                animation.From = 0;
-                animation.To = 90;
-                animation.Duration = TimeSpan.FromSeconds(0.1);
+                var animation = new DoubleAnimation()
+                {
+                    From = 0,
+                    To = 90,
+                    Duration = TimeSpan.FromSeconds(0.1)
+                };
                 Storyboard.SetTarget(animation, image);
                 Storyboard.SetTargetProperty(animation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(RotateTransform.Angle)"));
                 storyboard.Children.Add(animation);
             }
             {
-                DoubleAnimationUsingKeyFrames animation = new DoubleAnimationUsingKeyFrames();
+                var animation = new DoubleAnimationUsingKeyFrames();
                 animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
                 {
                     KeyTime = TimeSpan.FromSeconds(0),
@@ -119,7 +116,7 @@ namespace NSUI.Controls
                 storyboard.Children.Add(animation);
             }
             {
-                DoubleAnimationUsingKeyFrames animation = new DoubleAnimationUsingKeyFrames();
+                var animation = new DoubleAnimationUsingKeyFrames();
                 animation.KeyFrames.Add(new DiscreteDoubleKeyFrame()
                 {
                     KeyTime = TimeSpan.FromSeconds(0),

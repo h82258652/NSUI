@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -16,7 +17,7 @@ namespace NSUI.Sample.Views
             if (e.Key == Key.Escape)
             {
                 var window = new Window();
-                var frame = new Frame();
+                var frame = new Frame() {Focusable = false};
                 window.Content = frame;
                 frame.Navigate(new HomeView());
                 window.Show();
@@ -35,6 +36,11 @@ namespace NSUI.Sample.Views
             {
                 nsThemeManager.CurrentTheme = NSTheme.Light;
             }
+        }
+
+        private void NSButtonBase_OnClickEffectEnded(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ended");
         }
     }
 }

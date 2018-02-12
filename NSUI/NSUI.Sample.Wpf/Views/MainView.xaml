@@ -14,7 +14,7 @@
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <controls:NSSystemSettingsButton></controls:NSSystemSettingsButton>
+            <controls:NSSystemSettingsButton ClickEffectEnded="NSButtonBase_OnClickEffectEnded"></controls:NSSystemSettingsButton>
         </StackPanel>
         <Button HorizontalAlignment="Right"
                 VerticalAlignment="Center"

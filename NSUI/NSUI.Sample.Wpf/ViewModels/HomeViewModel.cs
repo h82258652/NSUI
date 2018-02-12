@@ -10,8 +10,14 @@ namespace NSUI.Sample.ViewModels
     {
         private readonly AppNavigationService _appNavigationService;
 
-        public HomeViewModel()
+        private readonly UserService _userService;
+
+        private ICommand _userProfileCommand;
+
+        public HomeViewModel(AppNavigationService appNavigationService)
         {
+            _appNavigationService = appNavigationService;
+
             _userService = new UserService();
 
             User = _userService.GetUser();
@@ -24,20 +30,13 @@ namespace NSUI.Sample.ViewModels
                     Icon = ""
                 }
             };
-
         }
-
-
-
-        private readonly UserService _userService;
-
-        public User User { get; }
 
         public List<Game> Games { get; }
 
         public IOperable Selected { get; set; }
 
-        private ICommand _userProfileCommand;
+        public User User { get; }
 
         public ICommand UserProfileCommand
         {
@@ -48,7 +47,6 @@ namespace NSUI.Sample.ViewModels
                     _appNavigationService.NavigateTo(ViewModelLocator.UserProfileViewKey);
                 });
                 return _userProfileCommand;
-
             }
         }
     }
