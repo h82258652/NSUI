@@ -34,6 +34,7 @@
                                    Maximum="{TemplateBinding ScrollableHeight}"
                                    Minimum="0"
                                    Orientation="Vertical"
+                                   Style="{StaticResource NSScrollBarStyle}"
                                    ViewportSize="{TemplateBinding ViewportHeight}"
                                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=VerticalOffset, Mode=OneWay}" />
@@ -44,6 +45,7 @@
                                    Maximum="{TemplateBinding ScrollableWidth}"
                                    Minimum="0"
                                    Orientation="Horizontal"
+                                   Style="{StaticResource NSScrollBarStyle}"
                                    ViewportSize="{TemplateBinding ViewportWidth}"
                                    Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HorizontalOffset, Mode=OneWay}" />

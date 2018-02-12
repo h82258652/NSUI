@@ -140,6 +140,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="G\ScrollBar.G.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="G\ScrollViewer.G.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="G\TextBox.G.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

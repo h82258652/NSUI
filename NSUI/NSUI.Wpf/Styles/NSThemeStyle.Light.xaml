@@ -15,4 +15,12 @@
                      Color="#979797" />
     <SolidColorBrush x:Key="NSAppButtonBackgroundBrush"
                      Color="#FFFFFF" />
+    <SolidColorBrush x:Key="NSAppButtonForegroundBrush"
+                     Color="#737474" />
+    <SolidColorBrush x:Key="NSNewsIconBrush"
+                     Color="Red" />
+    <SolidColorBrush x:Key="NSAlbumIconBrush"
+                     Color="Red" />
+    <SolidColorBrush x:Key="NSeShopIconBrush"
+                     Color="Red" />
 </ResourceDictionary>
