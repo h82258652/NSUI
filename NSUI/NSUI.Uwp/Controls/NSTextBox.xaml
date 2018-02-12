@@ -9,7 +9,7 @@
         <Setter Property="BorderThickness"
                 Value="2" />
         <Setter Property="FontFamily"
-                Value="{ThemeResource ContentControlThemeFontFamily}" />
+                Value="{ThemeResource NSFontFamily}" />
         <Setter Property="FontSize"
                 Value="22" />
         <Setter Property="Foreground"
@@ -48,38 +48,37 @@
                         <Border x:Name="PART_Border"
                                 Grid.Row="1"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}" />
-                        <ContentPresenter x:Name="HeaderContentPresenter"
-                                          Grid.Row="0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <ScrollViewer x:Name="ContentElement"
+                                              Padding="{TemplateBinding Padding}"
+                                              AutomationProperties.AccessibilityView="Raw"
+                                              HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                                              HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                                              IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                                              IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                                              IsTabStop="False"
+                                              IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                                              VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                                              VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+                                              ZoomMode="Disabled" />
+                                <Border Margin="2,0,0,0">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                      Content="{TemplateBinding PlaceholderText}"
+                                                      Foreground="{ThemeResource NSDisabledBrush}"
+                                                      IsHitTestVisible="False" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <ContentPresenter Grid.Row="0"
                                           Margin="0,0,0,8"
-                                          x:DeferLoadStrategy="Lazy"
                                           Content="{TemplateBinding Header}"
-                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                          FontWeight="Normal"
-                                          Visibility="Collapsed" />
-                        <ScrollViewer x:Name="ContentElement"
-                                      Grid.Row="0"
-                                      Margin="{Binding ElementName=PART_Border, Path=BorderThickness}"
-                                      Padding="{TemplateBinding Padding}"
-                                      AutomationProperties.AccessibilityView="Raw"
-                                      HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
-                                      HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
-                                      IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
-                                      IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
-                                      IsTabStop="False"
-                                      IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
-                                      VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
-                                      VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
-                                      ZoomMode="Disabled" />
-                        <ContentControl Grid.Row="1"
-                                        Margin="{Binding ElementName=PART_Border, Path=BorderThickness}"
-                                        Padding="{TemplateBinding Padding}"
-                                        Content="{TemplateBinding PlaceholderText}"
-                                        IsHitTestVisible="False"
-                                        IsTabStop="False" />
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}" />
                         <TextBlock x:Name="PART_LimitTextBlock"
                                    Grid.Row="2"
-                                   HorizontalAlignment="Right">
+                                   Margin="0,4,0,0"
+                                   TextAlignment="Right">
                             <Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Text.Length, Mode=OneWay}" /><Run Text="/" /><Run Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=MaxLength, Mode=OneWay}" /></TextBlock>
                     </Grid>
                 </ControlTemplate>

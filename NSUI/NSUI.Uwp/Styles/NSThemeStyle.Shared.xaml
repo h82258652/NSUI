@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Styles/NSThemeStyle.ScrollBar.xaml" />
+        <ResourceDictionary Source="ms-appx:///NSUI.Uwp/Styles/NSThemeStyle.ScrollViewer.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <FontFamily x:Key="NSFontFamily">ms-appx:///NSUI.Uwp/Assets/Fonts/Nintendo Switch UI.ttf</FontFamily>
+</ResourceDictionary>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSUI.Wpf", "NSUI.Wpf\NSUI.Wpf.csproj", "{2E23CEC2-E01D-4544-B135-A3F5D1C48EED}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSUI.Sample.Wpf", "NSUI.Sample.Wpf\NSUI.Sample.Wpf.csproj", "{06AD68BD-D29E-4777-BDF6-9250CEC9041E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSUI.Sample.Uwp", "NSUI.Sample.Uwp\NSUI.Sample.Uwp.csproj", "{30862C48-662F-4F11-92E2-594314A75B43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE685E2A-4DB8-4B9F-BE8C-FEE33992EBBD}"
+	ProjectSection(SolutionItems) = preProject
+		done.txt = done.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
