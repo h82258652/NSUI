@@ -6,6 +6,8 @@
                 Value="False" />
         <Setter Property="Margin"
                 Value="-6" />
+        <Setter Property="ShakeAudioSource"
+                Value="pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSCircleFocusVisual">

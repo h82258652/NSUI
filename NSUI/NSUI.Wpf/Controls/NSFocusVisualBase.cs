@@ -3,26 +3,31 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using NAudio.Wave;
 
 namespace NSUI.Controls
 {
     [TemplatePart(Name = VisualElementTemplateName, Type = typeof(FrameworkElement))]
     public abstract class NSFocusVisualBase : Control, INSFocusVisual
     {
+        public static readonly DependencyProperty ShakeAudioSourceProperty = DependencyProperty.Register(nameof(ShakeAudioSource), typeof(Uri), typeof(NSFocusVisualBase), new PropertyMetadata(default(Uri)));
+
         private const string VisualElementTemplateName = "PART_VisualElement";
 
         private FrameworkElement _visualElement;
+
+        public Uri ShakeAudioSource
+        {
+            get => (Uri)GetValue(ShakeAudioSourceProperty);
+            set => SetValue(ShakeAudioSourceProperty, value);
+        }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
             _visualElement = (FrameworkElement)GetTemplateChild(VisualElementTemplateName);
-            if (_visualElement != null)
-            {
-                ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
-            }
+            Debug.Assert(_visualElement != null);
+            ((Storyboard)_visualElement.Resources["VisualBrushStoryboard"]).Begin();
         }
 
         public void ShakeDown()
@@ -45,26 +50,26 @@ namespace NSUI.Controls
             Shake(-8, 4, "(UIElement.RenderTransform).(TranslateTransform.Y)");
         }
 
-        private static void PlayShakeAudio()
+        private void PlayShakeAudio()
         {
-            using (var wasapiOut = new WasapiOut())
+            var shakeAudioSource = ShakeAudioSource;
+            if (shakeAudioSource == null)
             {
-                var audio = Application.GetResourceStream(new Uri("pack://application:,,,/NSUI.Wpf;component/Assets/Audios/standby.wav"));
-                Debug.Assert(audio != null);
-                var waveProvider = new WaveFileReader(audio.Stream);
-                wasapiOut.Init(waveProvider);
-                wasapiOut.Play();
+                return;
             }
+
+            NSAudioManager.PlayAudio(shakeAudioSource);
         }
 
         private void Shake(double value1, double value2, string propertyPath)
         {
-            PlayShakeAudio();
-
+            ApplyTemplate();
             if (_visualElement == null)
             {
                 return;
             }
+
+            PlayShakeAudio();
 
             var storyboard = new Storyboard();
             var animation = new DoubleAnimationUsingKeyFrames();
