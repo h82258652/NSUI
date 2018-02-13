@@ -7,7 +7,7 @@ using NSUI.Extensions;
 namespace NSUI.Controls
 {
     [TemplatePart(Name = RippleTemplateName, Type = typeof(UIElement))]
-    public class NSAppButton : NSButton
+    public class NSAppButton : NSCircleButton
     {
         private const string RippleTemplateName = "PART_Ripple";
 

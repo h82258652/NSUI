@@ -7,21 +7,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
     <Page.Resources>
-        <Style x:Key="FrameStyle1"
-               TargetType="Frame">
+        <Style x:Key="ContentControlStyle1"
+               TargetType="ContentControl">
             <Setter Property="HorizontalContentAlignment"
-                    Value="Stretch" />
-            <Setter Property="IsTabStop"
-                    Value="False" />
+                    Value="Left" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Frame">
-                        <ContentPresenter Padding="{TemplateBinding Padding}"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Background="{TemplateBinding Background}"
-                                          BorderBrush="{TemplateBinding BorderBrush}"
-                                          BorderThickness="{TemplateBinding BorderThickness}"
+                    <ControlTemplate TargetType="ContentControl">
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           Content="{TemplateBinding Content}"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           ContentTransitions="{TemplateBinding ContentTransitions}" />
@@ -29,19 +24,14 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="VerticalContentAlignment"
-                    Value="Stretch" />
+                    Value="Top" />
         </Style>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical">
-            <controls:NSButton Width="150"
-                               Content="A" />
-            <controls:NSButton Width="150"
-                               Margin="0,20,0,0"
-                               Content="B" />
-            <Frame Style="{StaticResource FrameStyle1}" />
+            <ContentControl Style="{StaticResource ContentControlStyle1}" />
         </StackPanel>
     </Grid>
 </Page>

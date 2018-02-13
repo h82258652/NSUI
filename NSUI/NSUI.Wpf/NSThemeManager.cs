@@ -8,6 +8,7 @@ namespace NSUI
     public class NSThemeManager : INSThemeManager
     {
         private static readonly List<WeakReference<NSThemeManager>> ThemeManagers = new List<WeakReference<NSThemeManager>>();
+
         private static NSTheme _currentTheme;
 
         public NSThemeManager()

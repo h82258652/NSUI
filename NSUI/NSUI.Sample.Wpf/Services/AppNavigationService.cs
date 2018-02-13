@@ -66,8 +66,9 @@ namespace NSUI.Sample.Services
             NavigateTo(pageKey, null);
         }
 
-        public void NavigateTo(string pageKey, object parameter)
+        public async void NavigateTo(string pageKey, object parameter)
         {
+            Type pageType;
             lock (_pagesByKey)
             {
                 if (!_pagesByKey.ContainsKey(pageKey))
@@ -75,10 +76,10 @@ namespace NSUI.Sample.Services
                     throw new ArgumentException(string.Format("No such page: {0}. Did you forget to call NavigationService.Configure?", pageKey), nameof(pageKey));
                 }
 
-                var frame = Application.Current.MainWindow.GetFirstDescendantOfType<NSFrame>();
-
-                frame.NavigateWithTransition(Activator.CreateInstance(_pagesByKey[pageKey]), parameter);
+                pageType = _pagesByKey[pageKey];
             }
+            var frame = Application.Current.MainWindow.GetFirstDescendantOfType<NSFrame>();
+            await frame.NavigateWithTransition(Activator.CreateInstance(pageType), parameter);
         }
     }
 }

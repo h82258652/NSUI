@@ -16,8 +16,7 @@
                     <StackPanel Orientation="Horizontal">
                         <UIElement.Effect>
                             <BlurEffect KernelType="Gaussian"
-                                        Radius="1"
-                                        RenderingBias="Quality" />
+                                        Radius="1" />
                         </UIElement.Effect>
                         <ItemsControl x:Name="PART_HourItemsControl"
                                       VerticalAlignment="Bottom"
@@ -43,7 +42,7 @@
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>
                         <TextBlock Margin="2,0,3,0"
-                                   VerticalAlignment="Center"
+                                   VerticalAlignment="Bottom"
                                    FontSize="27"
                                    LineHeight="27"
                                    LineStackingStrategy="BlockLineHeight"

@@ -19,12 +19,29 @@ namespace NSUI.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NSFrame), new FrameworkPropertyMetadata(typeof(NSFrame)));
         }
 
+        public async Task GoBackWithTransition()
+        {
+            await FadeOut();
+
+            GoBack();
+
+            await FadeIn();
+        }
+
+        public async Task GoForwardWithTransition()
+        {
+            await FadeOut();
+
+            GoForward();
+
+            await FadeIn();
+        }
+
         public async Task<bool> NavigateWithTransition(Uri source, object extraData)
         {
             await FadeOut();
 
-            // TODO
-            var result = base.Navigate(source, extraData);
+            var result = Navigate(source, extraData);
 
             await FadeIn();
 
@@ -45,8 +62,7 @@ namespace NSUI.Controls
         {
             await FadeOut();
 
-            // TODO
-            var result = base.Navigate(content, extraData);
+            var result = Navigate(content, extraData);
 
             await FadeIn();
 

@@ -11,7 +11,7 @@
         <Setter Property="FocusVisualStyle"
                 Value="{x:Null}" />
         <Setter Property="FontFamily"
-                Value="pack://application:,,,/NSUI.Wpf;component/Assets/Fonts/Nintendo Switch Font.ttf" />
+                Value="{DynamicResource NSFontFamily}" />
         <Setter Property="FontSize"
                 Value="22" />
         <Setter Property="Foreground"
@@ -28,7 +28,15 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver" />
-                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PressedIndicator"
+                                                                       Storyboard.TargetProperty="Opacity">
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:0"
+                                                                    Value="0.2" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
                                         <DoubleAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
@@ -59,34 +67,39 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 SnapsToDevicePixels="True">
-                            <Grid Margin="{TemplateBinding Padding}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid>
-                                    <Ellipse Width="25"
-                                             Height="25"
-                                             Fill="{TemplateBinding Foreground}" />
-                                    <TextBlock HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               Foreground="{DynamicResource NSBackgroundBrush}"
-                                               Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(AutomationProperties.AccessKey)}" />
+                            <Grid>
+                                <Grid Margin="{TemplateBinding Padding}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Ellipse Width="25"
+                                                 Height="25"
+                                                 Fill="{TemplateBinding Foreground}" />
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="18"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource NSBackgroundBrush}"
+                                                   Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(AutomationProperties.AccessKey)}" />
+                                    </Grid>
+                                    <ContentPresenter Grid.Column="1"
+                                                      Margin="10,0,0,0"
+                                                      VerticalAlignment="Center"
+                                                      Focusable="False"
+                                                      RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                 </Grid>
-                                <ContentPresenter Grid.Column="1"
-                                                  Margin="10,0,0,0"
-                                                  VerticalAlignment="Center"
-                                                  Focusable="False"
-                                                  RecognizesAccessKey="True"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <Rectangle x:Name="PressedIndicator"
+                                           Fill="{DynamicResource NSAccentBrush}"
+                                           IsHitTestVisible="False"
+                                           Opacity="0" />
                             </Grid>
                         </Border>
                         <controls:NSFocusVisual x:Name="PART_FocusVisual"
-                                                Margin="-2"
                                                 Visibility="Collapsed" />
                     </Grid>
                 </ControlTemplate>

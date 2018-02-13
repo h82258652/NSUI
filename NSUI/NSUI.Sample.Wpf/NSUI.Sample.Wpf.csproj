@@ -90,6 +90,7 @@
     <Compile Include="Models\IOperable.cs" />
     <Compile Include="Models\Operation.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="NSContentControl.cs" />
     <Compile Include="Services\AppNavigationService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -144,9 +145,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="G\Slider.G.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="G\TextBox.G.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>

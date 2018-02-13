@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace NSUI.Sample.Views
 {
@@ -41,6 +42,11 @@ namespace NSUI.Sample.Views
         private void NSButtonBase_OnClickEffectEnded(object sender, EventArgs e)
         {
             MessageBox.Show("Ended");
+        }
+
+        private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        {
+            xx.Toggle();
         }
     }
 }

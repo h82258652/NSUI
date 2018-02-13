@@ -11,6 +11,8 @@
                      Color="#FFFFFF" />
     <SolidColorBrush x:Key="NSDisabledBrush"
                      Color="Red" />
+    <SolidColorBrush x:Key="NSDividerBrush"
+                     Color="#FFFFFF" />
     <SolidColorBrush x:Key="NSAppButtonBorderBrush"
                      Color="#979797" />
     <SolidColorBrush x:Key="NSAppButtonBackgroundBrush"
@@ -19,8 +21,10 @@
                      Color="#DCDCDC" />
     <SolidColorBrush x:Key="NSNewsIconBrush"
                      Color="Red" />
-    <SolidColorBrush x:Key="NSAlbumIconBrush"
-                     Color="Red" />
     <SolidColorBrush x:Key="NSeShopIconBrush"
                      Color="Red" />
+    <SolidColorBrush x:Key="NSAlbumIconBrush"
+                     Color="Red" />
+    <SolidColorBrush x:Key="NSDialogMaskBrush"
+                     Color="#252A31" />
 </ResourceDictionary>
