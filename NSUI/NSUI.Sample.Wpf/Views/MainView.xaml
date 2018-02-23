@@ -17,11 +17,12 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <sample:NSContentControl x:Name="xx">
-                <TextBlock HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
-                           Text="1235wy34yswgw" />
-            </sample:NSContentControl>
+            <controls:NSDialogHost x:Name="DialogHost">
+                <TextBlock Text="1234t9tyagoaghwig" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+                <controls:NSDialogHost.DialogContent>
+                    <Border Background="Red" CornerRadius="8"></Border>
+                </controls:NSDialogHost.DialogContent>
+            </controls:NSDialogHost>
             <Button Grid.Row="1"
                     HorizontalAlignment="Center"
                     Click="ButtonBase_OnClick2"

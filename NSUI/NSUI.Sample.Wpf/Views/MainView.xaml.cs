@@ -46,7 +46,7 @@ namespace NSUI.Sample.Views
 
         private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
         {
-            xx.Toggle();
+            DialogHost.IsOpen = !DialogHost.IsOpen;
         }
     }
 }

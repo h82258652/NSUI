@@ -6,6 +6,7 @@
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSCircleButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSCircleFocusVisual.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSClock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSDialogHost.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSFocusVisual.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSFrame.xaml" />
         <ResourceDictionary Source="pack://application:,,,/NSUI.Wpf;component/Controls/NSNewsButton.xaml" />
