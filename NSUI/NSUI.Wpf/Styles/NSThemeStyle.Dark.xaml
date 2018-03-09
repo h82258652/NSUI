@@ -20,11 +20,11 @@
     <SolidColorBrush x:Key="NSAppButtonForegroundBrush"
                      Color="#DCDCDC" />
     <SolidColorBrush x:Key="NSNewsIconBrush"
-                     Color="Red" />
+                     Color="#FA593C" />
     <SolidColorBrush x:Key="NSeShopIconBrush"
-                     Color="Red" />
+                     Color="#FFB300" />
     <SolidColorBrush x:Key="NSAlbumIconBrush"
-                     Color="Red" />
+                     Color="#2C9CF0" />
     <SolidColorBrush x:Key="NSDialogMaskBrush"
                      Color="#252A31" />
 </ResourceDictionary>

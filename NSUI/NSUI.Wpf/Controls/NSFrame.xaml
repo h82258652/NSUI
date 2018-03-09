@@ -2,6 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:NSUI.Controls">
     <Style TargetType="controls:NSFrame">
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="NavigationUIVisibility"
+                Value="Hidden" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:NSFrame">

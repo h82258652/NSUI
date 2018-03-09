@@ -17,6 +17,10 @@ namespace NSUI.Sample.Views
         {
             if (e.Key == Key.Escape)
             {
+                var rootView = new RootView();
+                rootView.Show();
+
+                return;
                 var window = new Window();
                 var frame = new Frame() {Focusable = false};
                 window.Content = frame;

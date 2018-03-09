@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace NSUI.Controls
 {
@@ -17,9 +17,9 @@ namespace NSUI.Controls
         private const string DialogStateGroupName = "DialogStates";
         private const string OpenedStateName = "Opened";
 
-        static NSDialogHost()
+        public NSDialogHost()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(NSDialogHost), new FrameworkPropertyMetadata(typeof(NSDialogHost)));
+            DefaultStyleKey = typeof(NSDialogHost);
         }
 
         public event EventHandler DialogClosed;

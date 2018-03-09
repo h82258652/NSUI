@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 using NSUI.Extensions;
 
@@ -10,6 +11,8 @@ namespace NSUI.Controls
     [TemplatePart(Name = FrameContentPresenterTemplateName, Type = typeof(ContentPresenter))]
     public class NSFrame : Frame
     {
+        public static readonly DependencyProperty IsEscGoBackEnabledProperty = DependencyProperty.Register(nameof(IsEscGoBackEnabled), typeof(bool), typeof(NSFrame), new PropertyMetadata(default(bool)));
+
         private const string FrameContentPresenterTemplateName = "PART_FrameCP";
 
         private ContentPresenter _frameContentPresenter;
@@ -17,6 +20,17 @@ namespace NSUI.Controls
         static NSFrame()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NSFrame), new FrameworkPropertyMetadata(typeof(NSFrame)));
+        }
+
+        public NSFrame()
+        {
+            KeyDown += NSFrame_KeyDown;
+        }
+
+        public bool IsEscGoBackEnabled
+        {
+            get => (bool)GetValue(IsEscGoBackEnabledProperty);
+            set => SetValue(IsEscGoBackEnabledProperty, value);
         }
 
         public async Task GoBackWithTransition()
@@ -114,6 +128,15 @@ namespace NSUI.Controls
             Storyboard.SetTargetProperty(animation, new PropertyPath("Opacity"));
             storyboard.Children.Add(animation);
             return storyboard.BeginAsync();
+        }
+
+        private async void NSFrame_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (IsEscGoBackEnabled && CanGoBack)
+            {
+                e.Handled = true;
+                await GoBackWithTransition();
+            }
         }
     }
 }

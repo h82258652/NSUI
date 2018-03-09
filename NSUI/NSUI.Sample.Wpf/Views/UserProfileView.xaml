@@ -28,7 +28,9 @@
             </Grid>
             <Grid Grid.Column="1">
                 <!--  Right Side  -->
-                <ScrollViewer Style="{StaticResource NSScrollViewerStyle}" />
+                <ScrollViewer Style="{StaticResource NSScrollViewerStyle}">
+                    <Grid Background="Red" Width="100" Height="100"></Grid>
+                </ScrollViewer>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">

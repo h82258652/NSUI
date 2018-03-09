@@ -95,15 +95,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\NSContentControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\NSControllersButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NSDialogHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NSeShopButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +167,6 @@
   <ItemGroup>
     <Compile Include="Animation\CubicBezierEase.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Controls\INSDialog.cs" />
     <Compile Include="Controls\INSFocusVisual.cs" />
     <Compile Include="Controls\NSActionBarButton.cs" />
     <Compile Include="Controls\NSAlbumButton.cs" />
@@ -178,9 +177,9 @@
     <Compile Include="Controls\NSCircleButton.cs" />
     <Compile Include="Controls\NSCircleFocusVisual.cs" />
     <Compile Include="Controls\NSClock.cs" />
-    <Compile Include="Controls\NSContentControl.cs" />
     <Compile Include="Controls\NSControllersButton.cs" />
     <Compile Include="Controls\NSDialogHost.cs" />
+    <Compile Include="Controls\NSeShopButton.cs" />
     <Compile Include="Controls\NSFocusVisual.cs" />
     <Compile Include="Controls\NSFocusVisualBase.cs" />
     <Compile Include="Controls\NSFrame.cs" />
@@ -193,6 +192,7 @@
     <Compile Include="Extensions\StoryboardExtensions.cs" />
     <Compile Include="INSThemeManager.cs" />
     <Compile Include="NSAudioManager.cs" />
+    <Compile Include="NSFocusManager.cs" />
     <Compile Include="NSTheme.cs" />
     <Compile Include="NSThemeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -78,8 +78,12 @@ namespace NSUI.Sample.Services
 
                 pageType = _pagesByKey[pageKey];
             }
-            var frame = Application.Current.MainWindow.GetFirstDescendantOfType<NSFrame>();
-            await frame.NavigateWithTransition(Activator.CreateInstance(pageType), parameter);
+            var activeWindow = Application.Current.Windows.Cast<Window>().SingleOrDefault(temp => temp.IsActive);
+            if (activeWindow != null)
+            {
+                var frame = activeWindow.GetFirstDescendantOfType<NSFrame>();
+                await frame.NavigateWithTransition(Activator.CreateInstance(pageType), parameter);
+            }
         }
     }
 }

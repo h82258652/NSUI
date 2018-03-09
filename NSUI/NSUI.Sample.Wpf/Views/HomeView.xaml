@@ -5,11 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:NSUI.Sample.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:nsui="clr-namespace:NSUI;assembly=NSUI.Wpf"
       d:DesignHeight="720"
       d:DesignWidth="1280"
       DataContext="{Binding Source={StaticResource Locator}, Path=Home}"
       mc:Ignorable="d">
-    <Grid Background="{DynamicResource NSBackgroundBrush}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -54,12 +55,29 @@
             <!--  Apps & Settings  -->
             <StackPanel HorizontalAlignment="Center"
                         Orientation="Horizontal">
-                <controls:NSSystemSettingsButton />
-                <controls:NSSystemSettingsButton />
-                <controls:NSSystemSettingsButton />
-                <controls:NSSystemSettingsButton />
-                <controls:NSSystemSettingsButton />
-                <controls:NSPowerButton />
+                <controls:NSNewsButton />
+                <controls:NSNewsButton />
+                <controls:NSAlbumButton />
+                <controls:NSControllersButton />
+                <controls:NSSystemSettingsButton>
+                    <nsui:NSFocusManager.Actions>
+                        <StackPanel Orientation="Horizontal">
+                            <controls:NSActionBarButton AutomationProperties.AccessKey="C"
+                                                        Content="Doge" />
+                        </StackPanel>
+                    </nsui:NSFocusManager.Actions>
+                </controls:NSSystemSettingsButton>
+                <controls:NSPowerButton>
+                    <nsui:NSFocusManager.Actions>
+                        <StackPanel Orientation="Horizontal">
+                            <controls:NSActionBarButton AutomationProperties.AccessKey="B"
+                                                        Content="Cancel" />
+                            <controls:NSActionBarButton Margin="20,0,0,0"
+                                                        AutomationProperties.AccessKey="A"
+                                                        Content="OK" />
+                        </StackPanel>
+                    </nsui:NSFocusManager.Actions>
+                </controls:NSPowerButton>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="3">
