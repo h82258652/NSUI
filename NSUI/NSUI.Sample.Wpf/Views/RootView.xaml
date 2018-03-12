@@ -16,7 +16,7 @@
             <nsui:NSFocusManager x:Key="FocusManager" />
         </ResourceDictionary>
     </FrameworkElement.Resources>
-    <Grid>
+    <Grid Background="{DynamicResource NSBackgroundBrush}">
         <controls:NSDialogHost>
             <Grid>
                 <Grid.RowDefinitions>
@@ -40,7 +40,8 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <!--  Temp  -->
-                                <Grid Background="White">
+                                <Grid HorizontalAlignment="Left"
+                                      Background="White">
                                     <Image Source="/Assets/Images/switch.light.png"
                                            Stretch="None" />
                                 </Grid>

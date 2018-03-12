@@ -29,7 +29,17 @@
             <Grid Grid.Column="1">
                 <!--  Right Side  -->
                 <ScrollViewer Style="{StaticResource NSScrollViewerStyle}">
-                    <Grid Background="Red" Width="100" Height="100"></Grid>
+                    <StackPanel HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <controls:NSButton>
+                            <Grid Width="100"
+                                  Height="100"
+                                  Background="Red" />
+                        </controls:NSButton>
+                        <controls:NSTextBox Width="100"
+                                            MaxLength="15" />
+                    </StackPanel>
                 </ScrollViewer>
             </Grid>
         </Grid>

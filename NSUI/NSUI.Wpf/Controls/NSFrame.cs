@@ -132,7 +132,7 @@ namespace NSUI.Controls
 
         private async void NSFrame_KeyDown(object sender, KeyEventArgs e)
         {
-            if (IsEscGoBackEnabled && CanGoBack)
+            if (IsEscGoBackEnabled && CanGoBack && e.Key == Key.Escape)
             {
                 e.Handled = true;
                 await GoBackWithTransition();
