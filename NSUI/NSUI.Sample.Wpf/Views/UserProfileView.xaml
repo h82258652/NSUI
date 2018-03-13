@@ -25,6 +25,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <!--  Left Side  -->
+                <ScrollViewer></ScrollViewer>
             </Grid>
             <Grid Grid.Column="1">
                 <!--  Right Side  -->

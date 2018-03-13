@@ -115,6 +115,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\NSNavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NSNewsButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,6 +172,7 @@
     <Compile Include="Animation\CubicBezierEase.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controls\INSFocusVisual.cs" />
+    <Compile Include="Controls\NSNavigationView.cs" />
     <Compile Include="Controls\NSActionBarButton.cs" />
     <Compile Include="Controls\NSAlbumButton.cs" />
     <Compile Include="Controls\NSAppButton.cs" />
